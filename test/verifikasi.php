@@ -58,7 +58,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<ul class="header-in">
 				<li><a href="404.html">about us</a> </li>
 				<li><a href="contact.html">   contact us</a></li>
-				<li ><a href="#" >   how to use</a></li>
+				<li><a href="signin.php">   Login</a></li>
+				<li><a href="logout.php?logout"><span class="glyphicon glyphicon-log-out"></span>&nbsp;Logout</a></li>
 			</ul>
 			<div class="search-top">
 				<div class="search">
@@ -90,7 +91,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 		<div class="head-top">
 			<div class="logo">
-				<a href="index.php"><img src="images/logo4.png" alt="" ></a>
+				<a href="home.php"><img src="images/logo4.png" alt="" ></a>
 			</div>
       <div class="top-nav">
   			  <ul class="megamenu skyblue">
