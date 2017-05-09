@@ -116,33 +116,37 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </div>
 
 		<h2 class="new">Konfirmasi Order</h2>
+		<div class="clearfix"> </div>
 
 
 <!--Form-->
-<div class=" col-md-9 contact-left">
+<div class="col-md-3 at-single">
+	<div class="single-bottom">
+		<h4>Pilihan opsi pembayaran</h4>
+		<ul>
+		<li>
+			<input type="checkbox"  id="brand" value="">
+			<label for="brand"><span></span> BRI</label>
+		</li>
+		<li>
+			<input type="checkbox"  id="brand1" value="">
+			<label for="brand1"><span></span> BCA</label>
+		</li>
+		<li>
+			<input type="checkbox"  id="brand1" value="">
+			<label for="brand1"><span></span> BNI</label>
+		</li>
+		<li>
+			<input type="checkbox"  id="brand1" value="">
+			<label for="brand1"><span></span> Mandiri</label>
+		</li>
+		</ul>
+		<a href="#" class="cart ">Konfirmasi</a>
+	</div>
 
-      <form >
-        <div>
-          <span>Nama</span>
-          <input name="userName" type="text" class="textbox">
-        </div>
-        <div>
-          <span>E-Mail</span>
-          <input name="userEmail" type="text" class="textbox">
-        </div>
-        <div>
-          <span>Alamat</span>
-          <input name="userEmail" type="text" class="textbox">
-        </div>
-        <div>
-          <span>Metode Pembayaran</span>
-          <input name="userEmail" type="text" class="textbox">
-        </div>
-       <div>
-          <input type="submit" value="Submit">
-       </div>
-      </form>
-  </div>
+<div class="clearfix"> </div>
+<br/>
+<br/>
 
 	<!--footer-->
 	<div class="footer">
@@ -161,12 +165,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="col-md-4 footer-left">
 				<ul class="term">
 					<li><a href="#">terms and conditions</a> </li>
-					<li><a href="#">  markito in the press</a></li>
 					<li ><a href="#" >  testimonials</a></li>
 				</ul>
 				<ul class="term">
 					<li><a href="#">join us</a> </li>
-					<li><a href="#">  markito videos</a></li>
 
 				</ul>
 				<div class="clearfix"> </div>

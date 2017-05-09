@@ -59,10 +59,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Coding Cage - Login & Registration System</title>
-<link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css"  />
-<link rel="stylesheet" href="style.css" type="text/css" />
+		<meta charset="utf-8">
+		<link href="login/css/style.css" rel='stylesheet' type='text/css' />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+		<!--webfonts-->
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text.css'/>
+		<!--//webfonts-->
 </head>
 <body>
 
@@ -94,33 +97,27 @@
    }
    ?>
 
-            <div class="form-group">
-             <div class="input-group">
-                <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
-             <input type="email" name="email" class="form-control" placeholder="Your Email" value="<?php echo $email; ?>" maxlength="40" />
-                </div>
-                <span class="text-danger"><?php echo $emailError; ?></span>
-            </div>
+           <ul class="left-form">
+             <h2>Masuk</h2>
 
-            <div class="form-group">
-             <div class="input-group">
-                <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-             <input type="password" name="pass" class="form-control" placeholder="Your Password" maxlength="15" />
-                </div>
-                <span class="text-danger"><?php echo $passError; ?></span>
-            </div>
+             <li>
+               <input type="email" name="email" class="form-control" placeholder="Masukan Email" maxlength="40" value="<?php echo $email ?>"/>
+               <span class="text-danger"><?php echo $emailError; ?></span>
+               <div class="clear"> </div>
+             </li>
+             <li>
+               <input type="password" name="pass" class="form-control" placeholder="Masukan Password" maxlength="15"/>
+               <span class="text-danger"><?php echo $passError; ?></span>
+               <div class="clear"> </div>
+             </li>
 
-            <div class="form-group">
-             <hr />
-            </div>
+             <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i>Please inform me of upcoming  w3layouts, Promotions and news</label>
+             <input type="submit" class="btn btn-block btn-primary" name="btn-login">
 
-            <div class="form-group">
-             <button type="submit" class="btn btn-block btn-primary" name="btn-login">Sign In</button>
-            </div>
+               <div class="clear"> </div>
+           </ul>
 
-            <div class="form-group">
-             <hr />
-            </div>
+
 
             <div class="form-group">
              <a href="register.php">Jika anda belom mempunyai akun silahkan mendaftar disini</a>
