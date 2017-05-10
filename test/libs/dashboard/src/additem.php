@@ -43,7 +43,7 @@ include('action_upload.php');
 			-->
 
 			<div class="logo">
-				<a href="http://www.creative-tim.com" class="simple-text">
+				<a href="..\..\..\home.php" class="simple-text">
 					BOLEH
 				</a>
 			</div>
@@ -94,9 +94,9 @@ include('action_upload.php');
 	                    </a>
 	                </li>
 					<li class="active-pro">
-                        <a href="upgrade.php">
+                        <a href="usersdata.php">
 	                        <i class="material-icons">unarchive</i>
-	                        <p>Upgrade to PRO</p>
+	                        <p>Seller</p>
 	                    </a>
                     </li>
 	            </ul>

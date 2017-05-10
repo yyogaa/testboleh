@@ -39,7 +39,7 @@
 		    -->
 
 			<div class="logo">
-				<a href="http://www.creative-tim.com" class="simple-text">
+				<a href="..\..\..\home.php" class="simple-text">
 					BOLEH
 				</a>
 			</div>
@@ -89,9 +89,9 @@
 	                    </a>
 	                </li>
                     <li class="active active-pro">
-                        <a href="upgrade.php">
+                        <a href="usersdata.php">
 	                        <i class="material-icons">unarchive</i>
-	                        <p>Upgrade to PRO</p>
+	                        <p>Seller</p>
 	                    </a>
                     </li>
 	            </ul>
@@ -153,82 +153,57 @@
 				</div>
 			</nav>
 
-	        <div class="content">
-	            <div class="container-fluid">
-                    <div class="row">
-    					<div class="col-md-8 col-md-offset-2">
-                            <div class="card">
-                                <div class="card-header text-center" data-background-color="purple">
-                                    <h4 class="title">Material Dashboard PRO</h3>
-                                    <p class="category">Are you looking for more components? Please check our Premium Version of Material Dashboard.</p>
-                                </div>
-                                <div class="card-content">
-                                    <div class="table-responsive table-upgrade">
-                                        <table class="table">
-                                            <thead>
-                                                <th></th>
-                                            	<th class="text-center">Free</th>
-                                            	<th class="text-center">PRO</th>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                	<td>Components</td>
-                                                	<td class="text-center">60</td>
-                                                	<td class="text-center">200</td>
-                                                </tr>
-                                                <tr>
-                                                	<td>Plugins</td>
-                                                	<td class="text-center">2</td>
-                                                	<td class="text-center">15</td>
-                                                </tr>
-                                                <tr>
-                                                	<td>Example Pages</td>
-                                                	<td class="text-center">3</td>
-                                                	<td class="text-center">27</td>
-                                                </tr>
-												<tr>
-                                                	<td>Login, Register, Pricing, Lock Pages</td>
-        											<td class="text-center"><i class="fa fa-times text-danger"></i></td>
-                                                	<td class="text-center"><i class="fa fa-check text-success"></td>
-                                                </tr>
-												<tr>
-                                                	<td>DataTables, VectorMap, SweetAlert, Wizard, jQueryValidation, FullCalendar etc...</td>
-        											<td class="text-center"><i class="fa fa-times text-danger"></i></td>
-                                                	<td class="text-center"><i class="fa fa-check text-success"></td>
-                                                </tr>
-												<tr>
-                                                	<td>Mini Sidebar</td>
-        											<td class="text-center"><i class="fa fa-times text-danger"></i></td>
-                                                	<td class="text-center"><i class="fa fa-check text-success"></td>
-                                                </tr>
-        										<tr>
-                                                	<td>Premium Support</td>
-        											<td class="text-center"><i class="fa fa-times text-danger"></i></td>
-                                                	<td class="text-center"><i class="fa fa-check text-success"></td>
-                                                </tr>
-        										<tr>
-                                                	<td></td>
-        											<td class="text-center">Free</td>
-                                                	<td class="text-center">Just $49</td>
-                                                </tr>
-        										<tr>
-        											<td class="text-center"></td>
-        											<td class="text-center">
-        												<a href="#" class="btn btn-round btn-fill btn-default disabled">Current Version</a>
-        											</td>
-        											<td class="text-center">
-        												<a target="_blank" href="http://www.creative-tim.com/product/material-dashboard-pro/?ref=md-free-upgrade-archive" class="btn btn-round btn-fill btn-info">Upgrade to PRO</a>
-        											</td>
-        										</tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-	            </div>
-	        </div>
+			<div class="content">
+				 <div class="container-fluid">
+						 <div class="row">
+								 <div class="col-md-12">
+										 <div class="card">
+												 <div class="card-header" data-background-color="purple">
+														 <h4 class="title">Barang Anda</h4>
+														 <p class="category">Silahkan Sesuaikan Barang Anda</p>
+												 </div>
+												 <div class="card-content table-responsive">
+														 <table class="table">
+																 <thead class="text-primary">
+																	 <th>No</th>
+																	 <th>Penjual</th>
+																	 <th>Alamat</th>
+																	 <th>Phone</th>
+																	 <th>Email</th>
+																	 <th></th>
+																	 <th>Action</th>
+
+																 </thead>
+																 <tbody>
+																	 <!-- SHOWING TABLE -->
+																		 <?php
+																		 include "config.php";
+																		 $query = mysqli_query($conn, "SELECT * FROM items");
+																		 $count = 1;
+
+																		 while($result = mysqli_fetch_array($query)){ //selama masih bisa fetch data
+																			 echo
+																			 '<tr>
+																				 <td>'.$count++.'</td>
+																				 <td>'.$result['item_name'].'</td>
+																				 <td>'.$result['price'].'</td>
+																				 <td> </td>
+																				 <td> </td>
+																				 <td><a href="edit.php?id='.$result['id'].'"><button type="button" class="btn btn-primary">Edit</button></a></td>
+																				 <td><a href="delete.php?id='.$result['id'].'"><button type="button" class="btn btn-danger">Delete</button></a></td>
+																			 </tr>';
+																		 }
+
+																			?>
+
+																		 <tr>
+																			 <td><a href="additem.php"> <button type="button" class="btn btn primary">Tambah</button></a></td>
+																		 </tr>
+																 </tbody>
+														 </table>
+												 </div>
+										 </div>
+								 </div>
 
 	        <footer class="footer">
 	            <div class="container-fluid">
