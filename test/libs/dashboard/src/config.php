@@ -1,8 +1,4 @@
 <?php
-$dbhost	= 'localhost';
-$dbuser	= 'root';
-$dbpass	= '';
-$dbname	= 'dbtest';
-$dbconn	= mysql_connect($dbhost,$dbuser,$dbpass);
-$dbopen	= mysql_select_db($dbname,$dbconn);
+  $conn = mysqli_connect("localhost","root","","boleh_db")
+  or die ("Gagal Koneksi".mysqli_error());
 ?>

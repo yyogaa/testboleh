@@ -1,3 +1,7 @@
+<?php
+
+ ?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -164,6 +168,7 @@
 	                            <div class="card-content table-responsive">
 	                                <table class="table">
 	                                    <thead class="text-primary">
+																				<th>No</th>
 	                                    	<th>Nama Barang</th>
 	                                    	<th>Harga</th>
 	                                    	<th>Kuantitas</th>
@@ -172,30 +177,26 @@
 																				<th></th>
 	                                    </thead>
 	                                    <tbody>
-	                                        <tr>
-	                                        	<td>Cimol</td>
-	                                        	<td class="text-primary">$36,738</td>
-	                                        	<td>100</td>
-																						<td></td>
-																						<td><a href="edit.php?id='.$result['id_mahasiswa'].'"><button type="button" class="btn btn-primary">Edit</button></a></td>
-																						<td><a href="delete.php?id='.$result['id_mahasiswa'].'"><button type="button" class="btn btn-danger">Delete</button></a></td>
-	                                        </tr>
-	                                        <tr>
-	                                        	<td>Cilor</td>
-																						<td class="text-primary">$23,789</td>
-	                                        	<td>50</td>
-	                                        	<td></td>
-																						<td><a href="edit.php?id='.$result['id_mahasiswa'].'"><button type="button" class="btn btn-primary">Edit</button></a></td>
-																						<td><a href="delete.php?id='.$result['id_mahasiswa'].'"><button type="button" class="btn btn-danger">Delete</button></a></td>
-															            </tr>
-	                                        <tr>
-	                                        	<td>Batagor</td>
-																						<td class="text-primary">$56,142</td>
-																						<td>100</td>
-	                                        	<td></td>
-																						<td><a href="edit.php?id='.$result['id_mahasiswa'].'"><button type="button" class="btn btn-primary">Edit</button></a></td>
-																						<td><a href="delete.php?id='.$result['id_mahasiswa'].'"><button type="button" class="btn btn-danger">Delete</button></a></td>
-	                                        </tr>
+																				<!-- SHOWING TABLE -->
+	                                        <?php
+																					include "config.php";
+																					$query = mysqli_query($conn, "SELECT * FROM items");
+																					$count = 1;
+
+																					while($result = mysqli_fetch_array($query)){ //selama masih bisa fetch data
+																						echo
+																						'<tr>
+																							<td>'.$count++.'</td>
+																							<td>'.$result['item_name'].'</td>
+																							<td>'.$result['price'].'</td>
+																							<td> </td>
+																							<td> </td>
+																							<td><a href="edit.php?id='.$result['id'].'"><button type="button" class="btn btn-primary">Edit</button></a></td>
+																							<td><a href="delete.php?id='.$result['id'].'"><button type="button" class="btn btn-danger">Delete</button></a></td>
+																						</tr>';
+																					}
+
+																					 ?>
 
 																					<tr>
 																						<td><a href="additem.php"> <button type="button" class="btn btn primary">Tambah</button></a></td>
