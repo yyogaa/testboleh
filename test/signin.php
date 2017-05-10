@@ -205,7 +205,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </tr>
         <tr>
           <tr>
-            <td><input type="submit" class="btn btn-block btn-primary" name="btn-login"></td>
+            <td><input type="submit" class="btn btn-block btn-primary" name="btn-login" align='center'></td>
           </tr>
         </tr>
       </table>
@@ -213,6 +213,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
  </div>
 		<!---->
     <div class="clearfix"> </div>
+    <p align='center'> Pengguna baru? <a href="register.php">Daftar Sekarang</a></p>
     <div class="clearfix"> </div>
     <br/>
     <br/>

@@ -231,15 +231,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     ?>
       <table width="600px" cellpadding="0" cellspacing="0" align="center">
         <tr>
-          <td width="100">Nama</td>
+          <td width="100">Nama *</td>
           <td><input type="text" class="form-control" name="name" placeholder="Masukan Username" max length="40" value="<?php echo $name ?>"/></td>
         </tr>
         <tr>
-          <td width="100">Email</td>
+          <td width="100">Email *</td>
           <td><input type="email" class="form-control" name="email" placeholder="Masukan Email Valid" max length="50" value="<?php echo $email ?>"/></td>
         </tr>
         <tr>
-          <td width="100">Password</td>
+          <td width="100">Password *</td>
           <td><input type="password" class="form-control" name="pass" placeholder="Masukan Password" max length="20"/></td>
         </tr>
         <tr>
@@ -251,11 +251,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
           <td><input type="number" class="form-control" name="nohp" placeholder="Masukan alamat" max length="12" value="<?php echo $nohp ?>"/></td>
         </tr>
         <tr>
-          <tr>
-            <td><input type="submit" class="btn btn-block btn-primary" name="btn-signup"></td>
-          </tr>
+          <td><input type="submit" class="btn btn-block btn-primary" name="btn-signup"></td>
         </tr>
       </table>
+      <p align='center'>* Wajib di isi</p>
   </form>
  </div>
 		<!---->
