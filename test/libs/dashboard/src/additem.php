@@ -1,3 +1,9 @@
+<?php
+include('config.php');
+include('action_upload.php');
+?>
+
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -60,7 +66,7 @@
 	                <li class="active">
 	                    <a href="table.php">
 	                        <i class="material-icons">content_paste</i>
-	                        <p>Barang</p>
+	                        <p>Update Barang</p>
 	                    </a>
 	                </li>
 	                <li>
@@ -107,7 +113,7 @@
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href="#">Barang</a>
+						<a class="navbar-brand" href="#">Update Barang</a>
 					</div>
 					<div class="collapse navbar-collapse">
 						<ul class="nav navbar-nav navbar-right">
@@ -158,50 +164,34 @@
 	                    <div class="col-md-12">
 	                        <div class="card">
 	                            <div class="card-header" data-background-color="purple">
-	                                <h4 class="title">Barang Anda</h4>
-	                                <p class="category">Silahkan Sesuaikan Barang Anda</p>
+	                                <h4 class="title">Tambah Barang</h4>
+	                                <p class="category">Silahkan Tambah Barang Baru</p>
 	                            </div>
 	                            <div class="card-content table-responsive">
-	                                <table class="table">
-	                                    <thead class="text-primary">
-	                                    	<th>Nama Barang</th>
-	                                    	<th>Harga</th>
-	                                    	<th>Kuantitas</th>
-																				<th></th>
-																				<th>Action</th>
-																				<th></th>
-	                                    </thead>
-	                                    <tbody>
-	                                        <tr>
-	                                        	<td>Cimol</td>
-	                                        	<td class="text-primary">$36,738</td>
-	                                        	<td>100</td>
-																						<td></td>
-																						<td><a href="edit.php?id='.$result['id_mahasiswa'].'"><button type="button" class="btn btn-primary">Edit</button></a></td>
-																						<td><a href="delete.php?id='.$result['id_mahasiswa'].'"><button type="button" class="btn btn-danger">Delete</button></a></td>
-	                                        </tr>
-	                                        <tr>
-	                                        	<td>Cilor</td>
-																						<td class="text-primary">$23,789</td>
-	                                        	<td>50</td>
-	                                        	<td></td>
-																						<td><a href="edit.php?id='.$result['id_mahasiswa'].'"><button type="button" class="btn btn-primary">Edit</button></a></td>
-																						<td><a href="delete.php?id='.$result['id_mahasiswa'].'"><button type="button" class="btn btn-danger">Delete</button></a></td>
-															            </tr>
-	                                        <tr>
-	                                        	<td>Batagor</td>
-																						<td class="text-primary">$56,142</td>
-																						<td>100</td>
-	                                        	<td></td>
-																						<td><a href="edit.php?id='.$result['id_mahasiswa'].'"><button type="button" class="btn btn-primary">Edit</button></a></td>
-																						<td><a href="delete.php?id='.$result['id_mahasiswa'].'"><button type="button" class="btn btn-danger">Delete</button></a></td>
-	                                        </tr>
-
-																					<tr>
-																						<td><a href="additem.php"> <button type="button" class="btn btn primary">Tambah</button></a></td>
-																					</tr>
-	                                    </tbody>
-	                                </table>
+                                <form method="post" enctype="multipart/form-data" action="">
+                                    <table class="table" cellpadding="0" cellspacing="0" align="center">
+                                      <tr>
+                                        <td width="100">Nama</td>
+                                        <td><input type="text" name="name_gbr" /></td>
+                                      </tr>
+                                      <tr>
+                                        <td width="100">Harga</td>
+                                        <td><input type="text" name="hrg_gbr" /></td>
+                                      </tr>
+                                      <tr>
+                                        <td width="100">File</td>
+                                        <td><input type="file" name="data_upload" /></td>
+                                      </tr>
+                                      <tr>
+                                        <td width="100" valign="top">Keterangan</td>
+                                        <td><textarea name="keterangan" cols="30" rows="3"></textarea></td>
+                                      </tr>
+                                      <tr>
+                                        <td></td>
+                                        <td><input type="submit" name="btnUpload" value="Upload" /></td>
+                                      </tr>
+                                    </table>
+                                </form>
 	                            </div>
 	                        </div>
 	                    </div>
