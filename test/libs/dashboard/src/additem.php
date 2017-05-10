@@ -168,7 +168,7 @@ include('action_upload.php');
 	                                <p class="category">Silahkan Tambah Barang Baru</p>
 	                            </div>
 	                            <div class="card-content table-responsive">
-                                <form method="post" enctype="multipart/form-data" action="">
+                                <form method="post"  enctype="multipart/form-data" action="">
                                     <table class="table" cellpadding="0" cellspacing="0" align="center">
                                       <tr>
                                         <td width="100">Nama</td>
