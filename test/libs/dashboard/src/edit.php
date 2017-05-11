@@ -1,3 +1,9 @@
+<?php
+include "config.php";
+$id = $_GET['id'];
+$query = mysqli_query($conn, "SELECT * FROM users WHERE id = '$id' ");
+ ?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -159,50 +165,30 @@
 								 <div class="col-md-12">
 										 <div class="card">
 												 <div class="card-header" data-background-color="purple">
-														 <h4 class="title">Seller</h4>
-														 <p class="category">List Of Active Seller</p>
+														 <h4 class="title">Barang Anda</h4>
+														 <p class="category">Silahkan Sesuaikan Barang Anda</p>
 												 </div>
 												 <div class="card-content table-responsive">
-														 <table class="table">
-																 <thead class="text-primary">
-																	 <th>No</th>
-																	 <th>Penjual</th>
-																	 <th>Alamat</th>
-																	 <th>Phone</th>
-																	 <th>Email</th>
-																	 <th></th>
-																	 <th>Action</th>
 
-																 </thead>
+
 																 <tbody>
+                                   <?php
+                                   $result = mysqli_fetch_array($query);
+                                    ?>
+                                   <form name="create" action="editproses.php" method="POST"> <!-- editproses untuk edit -->
+                                     <input type="hidden" name="id" value="<?php echo $result['id'];?>">
+                                     Email : <input type="email" name="email" value="<?php echo $result['email'];?>" required><br><br> <!--value untuk edit di form langsung-->
+                                     <!--Pass : <input type="password" name="passmhs" value="<?php echo $result ['pass'];?>" required><br><br>-->
+                                     Nama : <input type="text" name="name" value="<?php echo $result['name'];?>" required><br><br>
+                                     Address : <input type="text" name="address" value="<?php echo $result['address'];?>" required><br><br>
+                                     Phone : <input type="text" name="phone" value="<?php echo $result['phone'];?>" required><br><br>
+                                     <td><a href="usersdata.php"> <button type="button" class="btn btn primary">Update</button></a></td>
+                                   </form>
+
 																	 <!-- SHOWING TABLE -->
-																		 <?php
-																		 include "config.php";
-																		 $query = mysqli_query($conn, "SELECT * FROM users");
-																		 $count = 1;
 
-																		 while($result = mysqli_fetch_array($query)){ //selama masih bisa fetch data
-																			 echo
-																			 '<tr>
-																				 <td>'.$count++.'</td>
-																				 <td>'.$result['name'].'</td>
-																				 <td>'.$result['address'].'</td>
-																				 <td>'.$result['phone'].'</td>
-																				 <td>'.$result['email'].'</td>
-																				 <td> </td>
-																				 <td> </td>
-																				 <td><a href="edit.php?id='.$result['id'].'"><button type="button" class="btn btn-primary">Edit</button></a></td>
-																				 <td><a href="delete.php?id='.$result['id'].'"><button type="button" class="btn btn-danger">Delete</button></a></td>
-																			 </tr>';
-																		 }
-
-																			?>
-
-																		 <tr>
-																			 <td><a href="addusers.php"> <button type="button" class="btn btn primary">Tambah</button></a></td>
-																		 </tr>
 																 </tbody>
-														 </table>
+
 												 </div>
 										 </div>
 								 </div>

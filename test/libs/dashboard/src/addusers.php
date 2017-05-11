@@ -1,3 +1,9 @@
+<?php
+include('config.php');
+include('action_upload.php');
+?>
+
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -24,25 +30,24 @@
     <!--     Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
-
 </head>
 
 <body>
 
 	<div class="wrapper">
 	    <div class="sidebar" data-color="purple" data-image="../assets/img/sidebar-1.jpg">
-
 			<!--
-		        Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
+	        Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
+		    Tip 2: you can also add an image using data-image tag
 
-		        Tip 2: you can also add an image using data-image tag
-		    -->
+			-->
 
 			<div class="logo">
 				<a href="..\..\..\home.php" class="simple-text">
 					BOLEH
 				</a>
 			</div>
+
 
 	    	<div class="sidebar-wrapper">
 				<ul class="nav">
@@ -58,10 +63,10 @@
 	                        <p>User Profile</p>
 	                    </a>
 	                </li>
-	                <li>
+	                <li class="active">
 	                    <a href="table.php">
 	                        <i class="material-icons">content_paste</i>
-	                        <p>Barang</p>
+	                        <p>Update Barang</p>
 	                    </a>
 	                </li>
 	                <li>
@@ -88,7 +93,7 @@
 	                        <p>Notifications</p>
 	                    </a>
 	                </li>
-                    <li class="active active-pro">
+					<li class="active-pro">
                         <a href="usersdata.php">
 	                        <i class="material-icons">unarchive</i>
 	                        <p>Seller</p>
@@ -96,7 +101,7 @@
                     </li>
 	            </ul>
 	    	</div>
-	    </div>
+		</div>
 
 	    <div class="main-panel">
 			<nav class="navbar navbar-transparent navbar-absolute">
@@ -108,7 +113,7 @@
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href="#">Upgrade</a>
+						<a class="navbar-brand" href="#">Update Barang</a>
 					</div>
 					<div class="collapse navbar-collapse">
 						<ul class="nav navbar-nav navbar-right">
@@ -153,59 +158,52 @@
 				</div>
 			</nav>
 
-			<div class="content">
-				 <div class="container-fluid">
-						 <div class="row">
-								 <div class="col-md-12">
-										 <div class="card">
-												 <div class="card-header" data-background-color="purple">
-														 <h4 class="title">Seller</h4>
-														 <p class="category">List Of Active Seller</p>
-												 </div>
-												 <div class="card-content table-responsive">
-														 <table class="table">
-																 <thead class="text-primary">
-																	 <th>No</th>
-																	 <th>Penjual</th>
-																	 <th>Alamat</th>
-																	 <th>Phone</th>
-																	 <th>Email</th>
-																	 <th></th>
-																	 <th>Action</th>
+	        <div class="content">
+	            <div class="container-fluid">
+	                <div class="row">
+	                    <div class="col-md-12">
+	                        <div class="card">
+	                            <div class="card-header" data-background-color="purple">
+	                                <h4 class="title">Tambah Users</h4>
+	                                <p class="category">Silahkan Tambah User Baru</p>
+	                            </div>
+	                            <div class="card-content table-responsive">
+                                <form method="post" action="modules/addusers_process.php">
+                                    <table class="table" cellpadding="0" cellspacing="0" align="center">
+                                      <tr>
+                                        <td width="100">Nama Penjual</td>
+                                        <td><input type="text" name="seller_name" /></td>
+                                      </tr>
+                                      <tr>
+                                        <td width="100">Alamat Penjual</td>
+                                        <td><input type="text" name="seller_address" /></td>
+                                      </tr>
+                                      <tr>
+                                        <td width="100">Telepon</td>
+                                        <td><input type="number" name="seller_phone" /></td>
+                                      </tr>
+                                      <tr>
+                                        <td width="100" valign="top">Email</td>
+                                        <td><input type="email" name="email" /></td>
+                                      </tr>
+                                      <tr>
+                                        <td width="100" valign="top">Password For User</td>
+                                        <td><input type="password" name="password"></td>
+                                      </tr>
+                                      <tr>
+                                        <td width="100" valign="top">Bank Used</td>
+                                        <td><input type="text" name="bank"></td>
+                                      </tr>
 
-																 </thead>
-																 <tbody>
-																	 <!-- SHOWING TABLE -->
-																		 <?php
-																		 include "config.php";
-																		 $query = mysqli_query($conn, "SELECT * FROM users");
-																		 $count = 1;
-
-																		 while($result = mysqli_fetch_array($query)){ //selama masih bisa fetch data
-																			 echo
-																			 '<tr>
-																				 <td>'.$count++.'</td>
-																				 <td>'.$result['name'].'</td>
-																				 <td>'.$result['address'].'</td>
-																				 <td>'.$result['phone'].'</td>
-																				 <td>'.$result['email'].'</td>
-																				 <td> </td>
-																				 <td> </td>
-																				 <td><a href="edit.php?id='.$result['id'].'"><button type="button" class="btn btn-primary">Edit</button></a></td>
-																				 <td><a href="delete.php?id='.$result['id'].'"><button type="button" class="btn btn-danger">Delete</button></a></td>
-																			 </tr>';
-																		 }
-
-																			?>
-
-																		 <tr>
-																			 <td><a href="addusers.php"> <button type="button" class="btn btn primary">Tambah</button></a></td>
-																		 </tr>
-																 </tbody>
-														 </table>
-												 </div>
-										 </div>
-								 </div>
+                                      <tr>
+                                        <td></td>
+                                        <td><input type="submit" name="submit" /></td>
+                                      </tr>
+                                    </table>
+                                </form>
+	                            </div>
+	                        </div>
+	                    </div>
 
 	        <footer class="footer">
 	            <div class="container-fluid">
