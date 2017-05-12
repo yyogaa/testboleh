@@ -180,7 +180,7 @@ include('action_upload.php');
                                       </tr>
                                       <tr>
                                         <td width="100">Telepon</td>
-                                        <td><input type="number" name="seller_phone" /></td>
+                                        <td><input type="number" min=0 name="seller_phone" /></td>
                                       </tr>
                                       <tr>
                                         <td width="100" valign="top">Email</td>

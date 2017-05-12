@@ -175,14 +175,14 @@ $query = mysqli_query($conn, "SELECT * FROM users WHERE id = '$id' ");
                                    <?php
                                    $result = mysqli_fetch_array($query);
                                     ?>
-                                   <form name="create" action="editproses.php" method="POST"> <!-- editproses untuk edit -->
+                                   <form  action="editproses.php" method="POST"> <!-- editproses untuk edit -->
                                      <input type="hidden" name="id" value="<?php echo $result['id'];?>">
                                      Email : <input type="email" name="email" value="<?php echo $result['email'];?>" required><br><br> <!--value untuk edit di form langsung-->
                                      <!--Pass : <input type="password" name="passmhs" value="<?php echo $result ['pass'];?>" required><br><br>-->
                                      Nama : <input type="text" name="name" value="<?php echo $result['name'];?>" required><br><br>
                                      Address : <input type="text" name="address" value="<?php echo $result['address'];?>" required><br><br>
-                                     Phone : <input type="text" name="phone" value="<?php echo $result['phone'];?>" required><br><br>
-                                     <td><a href="usersdata.php"> <button type="button" class="btn btn primary">Update</button></a></td>
+                                     Phone : <input type="number" min=0 name="phone" value="<?php echo $result['phone'];?>" required><br><br>
+                                     <td><input type="submit" name="submit" /></td>
                                    </form>
 
 																	 <!-- SHOWING TABLE -->
