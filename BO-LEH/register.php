@@ -72,10 +72,19 @@
 //   $alamatError = "Alamat tidak valid";
 
    //hp
-//   if (strlen($nohp) < 11) {
-//    $error = true;
-//    $nohpError = "Nomor telepon kurang/tidak valid";
-
+   if (empty($nohp)) {
+    $error = true;
+    $nohpError = "Nomor telepon tidak boleh kosong.";
+  } else if(!is_numeric($nohp)){
+    $error = true;
+    $nohpError = "Nomor HP harus angka";
+  } else if (strlen($nohp) != 12){
+    $error = true;
+    $nohpError = "Nomor telepon tidak valid";
+  } else if(!preg_match("/^[0-9][0-9]{0, 12}/", $nohp)){
+    $error = true;
+    $nohpError = "Nomor telepon tidak valid";
+  }
 
   // password encrypt using SHA256();
   $password = hash('sha256', $pass);
@@ -197,8 +206,8 @@
 								<li><a href="home.php">Home</a></li>
 								<li class="dropdown"><a href="#">Kategori<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
-                                        <li><a href="shop.html">Makanan</a></li>
-										<li><a href="product-details.html">Cinderamata</a></li>
+                                        <li><a href="makanan.php">Makanan</a></li>
+										<li><a href="cinderamata.php">Cinderamata</a></li>
                                     </ul>
                                 </li>
 							</ul>
@@ -239,7 +248,7 @@
 							<td><input type="email" class="form-control" name="email" placeholder="Masukan Email Anda" max length="50" value="<?php echo $email ?>"/><span class="text-danger"><?php echo $emailError; ?></span></td>
 							<td><input type="password" class="form-control" name="pass" placeholder="Masukan Password" max length="20"/><span class="text-danger"><?php echo $passError; ?></span></td>
               <td><input type="text" class="form-control" name="alamat" placeholder="Masukan alamat" max length="100" value="<?php echo $alamat ?>"/></td>
-              <td><input type="number" class="form-control" name="nohp" placeholder="Masukan Nomor Telepon" max length="12" value="<?php echo $nohp ?>"/></td>
+              <td><input type="text" class="form-control" name="nohp" placeholder="Masukan Nomor Telepon" max length="12" value="<?php echo $nohp ?>"/></td><span class="text-danger"><?php echo $nohpError; ?></span></td>
 							<button type="submit" class="btn btn-default" name='btn-signup'>Daftar</button>
 						</form>
 					</div><!--/login form-->

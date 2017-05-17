@@ -149,8 +149,8 @@
 								<li><a href="home.php">Home</a></li>
 								<li class="dropdown"><a href="#">Kategori<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
-                                        <li><a href="shop.html">Makanan</a></li>
-										<li><a href="product-details.html">Cinderamata</a></li>
+                                        <li><a href="makanan.php">Makanan</a></li>
+										<li><a href="cinderamata.php">Cinderamata</a></li>
                                     </ul>
                                 </li>
 							</ul>
