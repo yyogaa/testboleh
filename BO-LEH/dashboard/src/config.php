@@ -1,4 +1,4 @@
 <?php
-  $conn = mysqli_connect("localhost","root","","boleh_db")
-  or die ("Gagal Koneksi".mysqli_error());
+  $conn = mysql_connect("localhost","root","","boleh_db")
+  or die ("Gagal Koneksi".mysql_error());
 ?>

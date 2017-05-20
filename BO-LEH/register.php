@@ -49,7 +49,7 @@
    $emailError = "Please enter valid email address.";
   } else {
    // check email exist or not
-   $query = "SELECT userEmail FROM users WHERE userEmail='$email'";
+   $query = "SELECT email FROM users WHERE email='$email'";
    $result = mysql_query($query);
    $count = mysql_num_rows($result);
    if($count!=0){
@@ -72,19 +72,19 @@
 //   $alamatError = "Alamat tidak valid";
 
    //hp
-   if (empty($nohp)) {
-    $error = true;
-    $nohpError = "Nomor telepon tidak boleh kosong.";
-  } else if(!is_numeric($nohp)){
-    $error = true;
-    $nohpError = "Nomor HP harus angka";
-  } else if (strlen($nohp) != 12){
-    $error = true;
-    $nohpError = "Nomor telepon tidak valid";
-  } else if(!preg_match("/^[0-9][0-9]{0, 12}/", $nohp)){
-    $error = true;
-    $nohpError = "Nomor telepon tidak valid";
-  }
+//   if (empty($nohp)) {
+//    $error = true;
+//    $nohpError = "Nomor telepon tidak boleh kosong.";
+//  } else if(!is_numeric($nohp)){
+//    $error = true;
+//    $nohpError = "Nomor HP harus angka";
+//  } else if (strlen($nohp) != 12){
+//    $error = true;
+//    $nohpError = "Nomor telepon tidak valid";
+//  } else if(!preg_match("/^[0-9][0-9]{0, 12}/", $nohp)){
+//    $error = true;
+//    $nohpError = "Nomor telepon tidak valid";
+//  }
 
   // password encrypt using SHA256();
   $password = hash('sha256', $pass);
@@ -92,7 +92,7 @@
   // if there's no error, continue to signup
   if( !$error ) {
 
-   $query = "INSERT INTO users(userName,userEmail,userPass,address,phone) VALUES('$name','$email','$password','$alamat','$nohp')";
+   $query = "INSERT INTO users(name,email,password,address,phone) VALUES('$name','$email','$password','$alamat','$nohp')";
    $res = mysql_query($query);
 
    if ($res) {
@@ -248,7 +248,7 @@
 							<td><input type="email" class="form-control" name="email" placeholder="Masukan Email Anda" max length="50" value="<?php echo $email ?>"/><span class="text-danger"><?php echo $emailError; ?></span></td>
 							<td><input type="password" class="form-control" name="pass" placeholder="Masukan Password" max length="20"/><span class="text-danger"><?php echo $passError; ?></span></td>
               <td><input type="text" class="form-control" name="alamat" placeholder="Masukan alamat" max length="100" value="<?php echo $alamat ?>"/></td>
-              <td><input type="text" class="form-control" name="nohp" placeholder="Masukan Nomor Telepon" max length="12" value="<?php echo $nohp ?>"/></td><span class="text-danger"><?php echo $nohpError; ?></span></td>
+              <td><input type="number" class="form-control" name="nohp" placeholder="Masukan Nomor Telepon" max length="12" value="<?php echo $nohp ?>"/></td>
 							<button type="submit" class="btn btn-default" name='btn-signup'>Daftar</button>
 						</form>
 					</div><!--/login form-->
