@@ -6,7 +6,7 @@
 	$name = $_POST['name'];
 	$address = $_POST['address'];
 	$phone = $_POST['phone'];
-  $sql_ganti = "UPDATE users SET name = '$name', address ='$address' , phone ='$phone' , email ='$email' WHERE id = '$id'";
+  $sql_ganti = "UPDATE users SET name = '$name', address ='$address' , phone ='$phone' , email ='$email' WHERE id_user = '$id'";
   if(mysqli_query($conn,$sql_ganti)){
 ?>
 <script language="javascript">alert("Input Successful");</script>

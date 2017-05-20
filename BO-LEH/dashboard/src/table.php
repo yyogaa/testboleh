@@ -191,8 +191,8 @@
 																							<td>'.$result['price'].'</td>
                                               <td><img src="images/'.$result['pic'].'"></td>
 																							<td> </td>
-																							<td><a href="edititem.php?id='.$result['id'].'"><button type="button" class="btn btn-primary">Edit</button></a></td>
-																							<td><a href="deleteitem.php?id='.$result['id'].'"><button type="button" class="btn btn-danger">Delete</button></a></td>
+																							<td><a href="edititem.php?id='.$result['id_item'].'"><button type="button" class="btn btn-primary">Edit</button></a></td>
+																							<td><a href="deleteitem.php?id='.$result['id_item'].'"><button type="button" class="btn btn-danger">Delete</button></a></td>
 																						</tr>';
 																					}
 

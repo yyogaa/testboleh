@@ -350,7 +350,7 @@
 							<div class="product-image-wrapper">
 								<div class="single-products">
 										<div class="productinfo text-center">
-                      <?php echo "<img src=coba/".$items['pic'].">";?>
+                      <?php echo "<img src=dashboard/src/images/".$items['pic'].">";?>
 											<h2>RP.<?php echo $items['price']; ?></h2>
 											<p><?php echo $items['item_name']; ?></p>
 											<a href="detailsproduct.php" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>

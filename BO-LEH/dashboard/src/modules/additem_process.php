@@ -13,7 +13,7 @@ $newpict = date('dmYHis').$pict;
 $path = "../images/".$newpict;
 //Uploading Process
 if(move_uploaded_file($temp, $path)){
-  $sql_create = "INSERT INTO items(id, item_name, price, type, pic, description, location) VALUE('','$item_name','$price', '$category', '$newpict', '$description', '$location')";
+  $sql_create = "INSERT INTO items(id_item, item_name, price, type, pic, description) VALUE('','$item_name','$price', '$category', '$newpict', '$description')";
   if(mysqli_query($conn, $sql_create)){
   ?>
   <script language="javascript">alert("Input Successful");</script>

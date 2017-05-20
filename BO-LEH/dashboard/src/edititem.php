@@ -1,7 +1,7 @@
 <?php
 include "config.php";
 $id = $_GET['id'];
-$query = mysqli_query($conn, "SELECT * FROM items WHERE id = '$id' ");
+$query = mysqli_query($conn, "SELECT * FROM items WHERE id_item = '$id' ");
  ?>
 
 <!doctype html>

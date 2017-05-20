@@ -1,11 +1,11 @@
 <?php
 include "config.php";
 $id = $_GET['id'];
-$sql_hapus = "DELETE FROM items WHERE id = '$id'";
+$sql_hapus = "DELETE FROM items WHERE id_item = '$id'";
    if (mysqli_query($conn, $sql_hapus)){
 ?>
- 		<script language="javascript">alert("Delete Successful");</script>   //skrip javascript untuk alert sderhana
- 		<script>document.location.href='table.php';</script> //untuk nge link
+ 		<script language="javascript">alert("Delete Successful");</script>   
+ 		<script>document.location.href='table.php';</script>
 <?php
  	}
  	else{

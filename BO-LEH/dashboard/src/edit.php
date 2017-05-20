@@ -1,7 +1,7 @@
 <?php
 include "config.php";
 $id = $_GET['id'];
-$query = mysqli_query($conn, "SELECT * FROM users WHERE id = '$id' ");
+$query = mysqli_query($conn, "SELECT * FROM users WHERE id_user = '$id' ");
  ?>
 
 <!doctype html>
@@ -176,7 +176,7 @@ $query = mysqli_query($conn, "SELECT * FROM users WHERE id = '$id' ");
                                    $result = mysqli_fetch_array($query);
                                     ?>
                                    <form  action="editproses.php" method="POST"> <!-- editproses untuk edit -->
-                                     <input type="hidden" name="id" value="<?php echo $result['id'];?>">
+                                     <input type="hidden" name="id" value="<?php echo $result['id_user'];?>">
                                      Email : <input type="email" name="email" value="<?php echo $result['email'];?>" required><br><br> <!--value untuk edit di form langsung-->
                                      <!--Pass : <input type="password" name="passmhs" value="<?php echo $result ['pass'];?>" required><br><br>-->
                                      Nama : <input type="text" name="name" value="<?php echo $result['name'];?>" required><br><br>

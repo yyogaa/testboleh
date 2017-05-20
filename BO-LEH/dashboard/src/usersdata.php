@@ -191,8 +191,8 @@
 																				 <td>'.$result['email'].'</td>
 																				 <td> </td>
 																				 <td> </td>
-																				 <td><a href="edit.php?id='.$result['id'].'"><button type="button" class="btn btn-primary">Edit</button></a></td>
-																				 <td><a href="delete.php?id='.$result['id'].'"><button type="button" class="btn btn-danger">Delete</button></a></td>
+																				 <td><a href="edit.php?id='.$result['id_user'].'"><button type="button" class="btn btn-primary">Edit</button></a></td>
+																				 <td><a href="delete.php?id='.$result['id_user'].'"><button type="button" class="btn btn-danger">Delete</button></a></td>
 																			 </tr>';
 																		 }
 
