@@ -66,7 +66,7 @@ include('action_upload.php');
 	                <li class="active">
 	                    <a href="table.php">
 	                        <i class="material-icons">content_paste</i>
-	                        <p>Update Barang</p>
+	                        <p>Barang</p>
 	                    </a>
 	                </li>
 	                <li>
@@ -113,7 +113,7 @@ include('action_upload.php');
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href="#">Update Barang</a>
+						<a class="navbar-brand" href="#">Barang</a>
 					</div>
 					<div class="collapse navbar-collapse">
 						<ul class="nav navbar-nav navbar-right">
@@ -168,27 +168,34 @@ include('action_upload.php');
 	                                <p class="category">Silahkan Tambah Barang Baru</p>
 	                            </div>
 	                            <div class="card-content table-responsive">
-                                <form method="post"  enctype="multipart/form-data" action="">
+                                <form method="post"  enctype="multipart/form-data" action="modules/additem_process.php">
                                     <table class="table" cellpadding="0" cellspacing="0" align="center">
                                       <tr>
-                                        <td width="100">Nama</td>
-                                        <td><input type="text" name="name_gbr" /></td>
+                                        <td width="100">Nama Barang</td>
+                                        <td><input type="text" name="item_name" /></td>
                                       </tr>
                                       <tr>
-                                        <td width="100">Harga</td>
-                                        <td><input type="text" name="hrg_gbr" /></td>
+                                        <td width="100">Harga Barang</td>
+                                        <td><input type="text" name="item_price" /></td>
                                       </tr>
+																			<tr>
+ 																			 <td width="100">Kategori</td>
+ 																			 <td><select class="" name="category">
+ 																			 		<option value="0">Makanan</option>
+																					<option value="1">Merchandise</option>
+ 																			 </select></td>
+ 																		 </tr>
                                       <tr>
                                         <td width="100">File</td>
-                                        <td><input type="file" name="data_upload" /></td>
+                                        <td><input type="file" name="pict" /></td>
                                       </tr>
                                       <tr>
                                         <td width="100" valign="top">Keterangan</td>
-                                        <td><textarea name="keterangan" cols="30" rows="3"></textarea></td>
+                                        <td><textarea name="description" cols="30" rows="3"></textarea></td>
                                       </tr>
                                       <tr>
                                         <td></td>
-                                        <td><input type="submit" name="btnUpload" value="Upload" /></td>
+                                        <td><input type="submit" class="btn btn-primary" name="btnUpload" /></td>
                                       </tr>
                                     </table>
                                 </form>
