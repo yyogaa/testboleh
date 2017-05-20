@@ -180,19 +180,19 @@
 																				<!-- SHOWING TABLE -->
 	                                        <?php
 																					include "config.php";
-																					$query = mysqli_query($conn, "SELECT * FROM items");
+																					$query = mysql_query($conn, "SELECT * FROM items");
 																					$count = 1;
 
-																					while($result = mysqli_fetch_array($query)){ //selama masih bisa fetch data
+																					while($result = mysql_fetch_array($query)){ //selama masih bisa fetch data
 																						echo
 																						'<tr>
 																							<td>'.$count++.'</td>
 																							<td>'.$result['item_name'].'</td>
 																							<td>'.$result['price'].'</td>
-                                              <td><img src="images/'.$result['pic'].'"></td>
+																							<td> </td>
 																							<td> </td>
 																							<td><a href="edititem.php?id='.$result['id'].'"><button type="button" class="btn btn-primary">Edit</button></a></td>
-																							<td><a href="deleteitem.php?id='.$result['id'].'"><button type="button" class="btn btn-danger">Delete</button></a></td>
+																							<td><a href="delete.php?id='.$result['id'].'"><button type="button" class="btn btn-danger">Delete</button></a></td>
 																						</tr>';
 																					}
 

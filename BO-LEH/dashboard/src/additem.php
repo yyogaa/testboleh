@@ -1,5 +1,5 @@
 <?php
-include('config.php');
+include('dbconnect.php');
 include('action_upload.php');
 ?>
 

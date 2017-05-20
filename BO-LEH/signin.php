@@ -41,12 +41,12 @@
 
    $password = hash('sha256', $pass); // password hashing using SHA256
 
-   $res=mysql_query("SELECT userId, userName, userPass FROM users WHERE userEmail='$email'");
+   $res=mysql_query("SELECT id_user, name, password FROM users WHERE email='$email'");
    $row=mysql_fetch_array($res);
    $count = mysql_num_rows($res); // if uname/pass correct it returns must be 1 row
 
-   if( $count == 1 && $row['userPass']==$password ) {
-    $_SESSION['user'] = $row['userId'];
+   if( $count == 1 && $row['password']==$password ) {
+    $_SESSION['user'] = $row['id_user'];
     header("Location: home.php");
    } else {
     $errMSG = "Incorrect Credentials, Try again..";
