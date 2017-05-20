@@ -8,6 +8,9 @@
 
  if (isset($_GET['logout'])) {
   unset($_SESSION['user']);
+  unset($_SESSION['name']);
+  unset($_SESSION['type']);
+
   session_unset();
   session_destroy();
   header("Location: signin.php");

@@ -76,6 +76,7 @@
                       if ( isset($_SESSION['user'])!="" ) {
 
                 ?>
+                <li><a href="akun.php"><i class="fa fa-user"></i> <?php echo $_SESSION['type'];  ?></a></li>
                 <li><a href="akun.php"><i class="fa fa-user"></i> <?php echo $_SESSION['name'];  ?></a></li>
                 <li><a href="logout.php?logout"> Logout </a></li>
 

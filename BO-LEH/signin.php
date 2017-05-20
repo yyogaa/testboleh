@@ -41,7 +41,7 @@
 
    $password = hash('md5', $pass); // password hashing using SHA256
 
-   $res=mysql_query("SELECT id_user, name, password FROM users WHERE email='$email'");
+   $res=mysql_query("SELECT id_user, name, password, code FROM users WHERE email='$email'");
    $row=mysql_fetch_array($res);
    $count = mysql_num_rows($res); // if uname/pass correct it returns must be 1 row
 
