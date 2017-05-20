@@ -38,7 +38,7 @@
 		    -->
 
 			<div class="logo">
-				<a href="..\..\..\home.php" class="simple-text">
+				<a href="..\..\home.php" class="simple-text">
 					BOLEH
 				</a>
 			</div>

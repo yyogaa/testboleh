@@ -45,7 +45,7 @@ $query = mysqli_query($conn, "SELECT * FROM users WHERE id_user = '$id' ");
 		    -->
 
 			<div class="logo">
-				<a href="..\..\..\home.php" class="simple-text">
+				<a href="..\..\home.php" class="simple-text">
 					BOLEH
 				</a>
 			</div>

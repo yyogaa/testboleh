@@ -39,7 +39,7 @@
   // if there's no error, continue to login
   if (!$error) {
 
-   $password = hash('sha256', $pass); // password hashing using SHA256
+   $password = hash('md5', $pass); // password hashing using SHA256
 
    $res=mysql_query("SELECT id_user, name, password FROM users WHERE email='$email'");
    $row=mysql_fetch_array($res);
@@ -47,6 +47,8 @@
 
    if( $count == 1 && $row['password']==$password ) {
     $_SESSION['user'] = $row['id_user'];
+    $_SESSION['name'] = $row['name'];
+    $_SESSION['type'] = $row['code'];
     header("Location: home.php");
    } else {
     $errMSG = "Incorrect Credentials, Try again..";
