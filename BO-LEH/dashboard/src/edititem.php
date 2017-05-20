@@ -185,12 +185,8 @@ $query = mysqli_query($conn, "SELECT * FROM items WHERE id = '$id' ");
                                         <option value="1">Merchandise</option>
                                         </select>
                                         <br><br>
-<<<<<<< HEAD
                                     Deskripsi : <textarea cols="40" rows="5" name="description" ><?php echo $result['description'];?></textarea>
                                     <br><br>
-=======
-                                    Deskripsi :
->>>>>>> 05ae7b0c6981628504bb2746035cdf5b7c8f9f71
                                         <td><input type="submit" name="submit" /></td>
                                        </form>
 

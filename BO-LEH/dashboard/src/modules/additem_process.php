@@ -1,5 +1,5 @@
 <?php
-include "dbconnect.php";
+include "config.php";
 
 $item_name = $_POST['item_name'];
 $category = $_POST['category'];
@@ -13,8 +13,8 @@ $newpict = date('dmYHis').$pict;
 $path = "../images/".$newpict;
 //Uploading Process
 if(move_uploaded_file($temp, $path)){
-  $sql_create = "INSERT INTO items(item_id, nama_item, harga, kode, gambar_item, deskripsi_item, location) VALUE('','$item_name','$price', '$category', '$newpict', '$description', '$location')";
-  if(mysql_query($conn, $sql_create)){
+  $sql_create = "INSERT INTO items(id, item_name, price, type, pic, description, location) VALUE('','$item_name','$price', '$category', '$newpict', '$description', '$location')";
+  if(mysqli_query($conn, $sql_create)){
   ?>
   <script language="javascript">alert("Input Successful");</script>
  <script>document.location.href='../table.php';</script>
@@ -30,7 +30,7 @@ else{
   echo "Sorry, can't upload the picture at the moment";
  echo "<br><a href='../additem.php'>Back to Form</a>";
 }
-mysql_close($conn);
+mysqli_close($conn);
  ?>
 
  ?>
