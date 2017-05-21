@@ -165,8 +165,8 @@ $query = mysqli_query($conn, "SELECT * FROM users WHERE id_user = '$id' ");
 								 <div class="col-md-12">
 										 <div class="card">
 												 <div class="card-header" data-background-color="purple">
-														 <h4 class="title">Barang Anda</h4>
-														 <p class="category">Silahkan Sesuaikan Barang Anda</p>
+														 <h4 class="title">Akun User</h4>
+														 <p class="category">Silahkan Sesuaikan Akun User</p>
 												 </div>
 												 <div class="card-content table-responsive">
 

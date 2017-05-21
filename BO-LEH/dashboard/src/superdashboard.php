@@ -1,14 +1,3 @@
-<?php
-include "config.php";
-session_start();
-$id = $_SESSION['user'];
-$query = mysqli_query($conn, "SELECT * FROM users WHERE id_user = $id" );
-$result = mysqli_fetch_array($query);
- ?>
-
-
-
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -61,47 +50,18 @@ $result = mysqli_fetch_array($query);
 	                        <p>Dashboard</p>
 	                    </a>
 	                </li>
-									<?php
-									if ($_SESSION['type'] == 1 ){
-									 echo
-	                '<li>
-	                    <a href="seller.php">
+	                <li>
+	                    <a href="superadmin.php">
 	                        <i class="material-icons">person</i>
 	                        <p>User Profile</p>
 	                    </a>
-	                </li>';
-								}else{
-									echo
-									'<li>
-	                    <a href="user.php">
-	                        <i class="material-icons">person</i>
-	                        <p>User Profile</p>
+	                </li>
+									<li>
+	                    <a href="usersdata.php">
+	                        <i class="material-icons">unarchive</i>
+	                        <p>Seller</p>
 	                    </a>
-	                </li>';
-								}
-									 ?>
-
-									<?php
-									if ($_SESSION['type'] == 1 ){
-									 echo
-	                '<li>
-	                    <a href="table.php">
-	                        <i class="material-icons">content_paste</i>
-	                        <p>Barang</p>
-	                    </a>
-	                </li>';
-								}else{
-									echo
-									'';
-								}
-									 ?>
-									 <li>
-                     <a href="transaction.php">
-                       <i class="material-icons">content_paste</i>
-                       <p>Transaksi Saya</p>
-                     </a>
-
-                   </li>
+	                </li>
 	            </ul>
 	    	</div>
 	    </div>

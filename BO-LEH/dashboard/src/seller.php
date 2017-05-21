@@ -4,7 +4,6 @@ session_start();
 $id = $_SESSION['user'];
 $query = mysqli_query($conn, "SELECT * FROM users WHERE id_user = $id" );
 $result = mysqli_fetch_array($query);
-
  ?>
 
 
@@ -60,47 +59,18 @@ $result = mysqli_fetch_array($query);
 	                        <p>Dashboard</p>
 	                    </a>
 	                </li>
-                  <?php
-									if ($_SESSION['type'] == 1 ){
-									 echo
-	                '<li>
+	                <li class="active">
 	                    <a href="seller.php">
 	                        <i class="material-icons">person</i>
 	                        <p>User Profile</p>
 	                    </a>
-	                </li>';
-								}else{
-									echo
-									'<li>
-	                    <a href="user.php">
-	                        <i class="material-icons">person</i>
-	                        <p>User Profile</p>
-	                    </a>
-	                </li>';
-								}
-									 ?>
-
-									<?php
-									if ($_SESSION['type'] == 1 ){
-									 echo
-	                '<li>
+	                </li>
+	                <li>
 	                    <a href="table.php">
 	                        <i class="material-icons">content_paste</i>
 	                        <p>Barang</p>
 	                    </a>
-	                </li>';
-								}else{
-									echo
-									'';
-								}
-									 ?>
-                   <li>
-                     <a href="transaction.php">
-                       <i class="material-icons">content_paste</i>
-                       <p>Transaksi Saya</p>
-                     </a>
-
-                   </li>
+	                </li>										
 	            </ul>
 	    	</div>
 	    </div>
@@ -138,7 +108,13 @@ $result = mysqli_fetch_array($query);
 									<li><a href="#">Another Notification</a></li>
 									<li><a href="#">Another One</a></li>
 								</ul>
-							</li>							
+							</li>
+							<li>
+								<a href="#pablo" class="dropdown-toggle" data-toggle="dropdown">
+	 							   <i class="material-icons">person</i>
+	 							   <p class="hidden-lg hidden-md">Profile</p>
+	 						   </a>
+							</li>
 						</ul>
 
 						<form class="navbar-form navbar-right" role="search">
@@ -257,7 +233,7 @@ $result = mysqli_fetch_array($query);
     								</a>
     							</div>
 
-                  <div class="content">
+    							<div class="content">
     								<h6 class="category text-gray">CEO / Co-Founder</h6>
     								<h4 class="card-title"><?php echo $result['name']; ?></h4>
     								<p class="card-content">

@@ -47,48 +47,20 @@
 	    	<div class="sidebar-wrapper">
 				<ul class="nav">
 	                <li>
-	                    <a href="dashboard.php">
+	                    <a href="superdashboard.php">
 	                        <i class="material-icons">dashboard</i>
 	                        <p>Dashboard</p>
 	                    </a>
 	                </li>
 	                <li>
-	                    <a href="user.php">
+	                    <a href="superadmin.php">
 	                        <i class="material-icons">person</i>
 	                        <p>User Profile</p>
 	                    </a>
 	                </li>
 	                <li>
-	                    <a href="table.php">
-	                        <i class="material-icons">content_paste</i>
-	                        <p>Barang</p>
-	                    </a>
 	                </li>
-	                <li>
-	                    <a href="typography.php">
-	                        <i class="material-icons">library_books</i>
-	                        <p>Typography</p>
-	                    </a>
-	                </li>
-	                <li>
-	                    <a href="icons.php">
-	                        <i class="material-icons">bubble_chart</i>
-	                        <p>Icons</p>
-	                    </a>
-	                </li>
-	                <li>
-	                    <a href="maps.php">
-	                        <i class="material-icons">location_on</i>
-	                        <p>Maps</p>
-	                    </a>
-	                </li>
-	                <li>
-	                    <a href="notifications.php">
-	                        <i class="material-icons text-gray">notifications</i>
-	                        <p>Notifications</p>
-	                    </a>
-	                </li>
-                    <li class="active active-pro">
+                    <li class="active">
                         <a href="usersdata.php">
 	                        <i class="material-icons">unarchive</i>
 	                        <p>Seller</p>
@@ -118,25 +90,14 @@
 									<p class="hidden-lg hidden-md">Dashboard</p>
 								</a>
 							</li>
-							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-									<i class="material-icons">notifications</i>
-									<span class="notification">5</span>
-									<p class="hidden-lg hidden-md">Notifications</p>
-								</a>
-								<ul class="dropdown-menu">
-									<li><a href="#">Mike John responded to your email</a></li>
-									<li><a href="#">You have 5 new tasks</a></li>
-									<li><a href="#">You're now friend with Andrew</a></li>
-									<li><a href="#">Another Notification</a></li>
-									<li><a href="#">Another One</a></li>
-								</ul>
-							</li>
 							<li>
 								<a href="#pablo" class="dropdown-toggle" data-toggle="dropdown">
 	 							   <i class="material-icons">person</i>
 	 							   <p class="hidden-lg hidden-md">Profile</p>
 	 						   </a>
+								 <ul class="dropdown-menu">
+ 									<li><a href="../../logout.php?logout">Logout</a></li>
+ 								</ul>
 							</li>
 						</ul>
 

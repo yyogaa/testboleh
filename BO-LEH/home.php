@@ -74,21 +74,34 @@
 
                 <?php
                       if ( isset($_SESSION['user'])!="" ) {
-
+                        if ( $_SESSION['type']=="1" ){
                 ?>
-                <li><a href="akun.php"><i class="fa fa-user"></i> <?php echo $_SESSION['type'];  ?></a></li>
-                <li><a href="akun.php"><i class="fa fa-user"></i> <?php echo $_SESSION['name'];  ?></a></li>
+                <li><a href="dashboard/src/seller.php"><i class="fa fa-user"></i> <?php echo $_SESSION['type'];  ?></a></li>
+                <li><a href="dashboard/src/seller.php"><i class="fa fa-user"></i> <?php echo $_SESSION['name'];  ?></a></li>
                 <li><a href="logout.php?logout"> Logout </a></li>
 
                 <?php
-                }else{
+              }else if($_SESSION['type']=="0"){
+                ?>
+                <li><a href="dashboard/src/user.php"><i class="fa fa-user"></i> <?php echo $_SESSION['type'];  ?></a></li>
+                <li><a href="dashboard/src/user.php"><i class="fa fa-user"></i> <?php echo $_SESSION['name'];  ?></a></li>
+                <li><a href="logout.php?logout"> Logout </a></li>
+                <?php
+              }else{
+                 ?>
+                 <li><a href="dashboard/src/superadmin.php"><i class="fa fa-user"></i> <?php echo $_SESSION['type'];  ?></a></li>
+                 <li><a href="dashboard/src/superadmin.php"><i class="fa fa-user"></i> <?php echo $_SESSION['name'];  ?></a></li>
+                 <li><a href="logout.php?logout"> Logout </a></li>
+                 <?php
+               }
+                  ?>
+                <?php } else {
                 ?>
                 <li><a href="signin.php" class="active"><i class="fa fa-lock"></i> Login </a></li>
-
-                <?php }
-                ?>
-
-							</ul>
+                <?php
+              }
+                 ?>
+              </ul>
 						</div>
 					</div>
 				</div>
@@ -345,7 +358,8 @@
 						<h2 class="title text-center">Features Items</h2>
             <?php
             $count = 1;
-            while($items = mysql_fetch_array($qry_item)){
+            while($items = mysqli_fetch_array($qry_item)){
+              $_SESSION['iditem'] = $items['id_item'];
             ?>
 						<div class="col-sm-4">
 							<div class="product-image-wrapper">
@@ -360,7 +374,7 @@
 											<div class="overlay-content">
 												<h2>RP.<?php echo $items['price']; ?></h2>
 												<p><?php echo $items['item_name']; ?></p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+												<a type="hidden" href="prod-detail.php" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 											</div>
 										</div>
 								</div>

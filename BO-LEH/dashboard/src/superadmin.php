@@ -55,52 +55,22 @@ $result = mysqli_fetch_array($query);
 	    	<div class="sidebar-wrapper">
 				<ul class="nav">
 	                <li>
-	                    <a href="dashboard.php">
+	                    <a href="superdashboard.php">
 	                        <i class="material-icons">dashboard</i>
 	                        <p>Dashboard</p>
 	                    </a>
 	                </li>
-                  <?php
-									if ($_SESSION['type'] == 1 ){
-									 echo
-	                '<li>
-	                    <a href="seller.php">
-	                        <i class="material-icons">person</i>
-	                        <p>User Profile</p>
-	                    </a>
-	                </li>';
-								}else{
-									echo
-									'<li>
+	                <li class="active">
 	                    <a href="user.php">
 	                        <i class="material-icons">person</i>
 	                        <p>User Profile</p>
 	                    </a>
-	                </li>';
-								}
-									 ?>
-
-									<?php
-									if ($_SESSION['type'] == 1 ){
-									 echo
-	                '<li>
-	                    <a href="table.php">
-	                        <i class="material-icons">content_paste</i>
-	                        <p>Barang</p>
+											<li>
+                        <a href="usersdata.php">
+	                        <i class="material-icons">unarchive</i>
+	                        <p>Seller</p>
 	                    </a>
-	                </li>';
-								}else{
-									echo
-									'';
-								}
-									 ?>
-                   <li>
-                     <a href="transaction.php">
-                       <i class="material-icons">content_paste</i>
-                       <p>Transaksi Saya</p>
-                     </a>
-
-                   </li>
+                    </li>
 	            </ul>
 	    	</div>
 	    </div>
@@ -138,7 +108,8 @@ $result = mysqli_fetch_array($query);
 									<li><a href="#">Another Notification</a></li>
 									<li><a href="#">Another One</a></li>
 								</ul>
-							</li>							
+							</li>
+
 						</ul>
 
 						<form class="navbar-form navbar-right" role="search">
@@ -252,16 +223,16 @@ $result = mysqli_fetch_array($query);
 						<div class="col-md-4">
     						<div class="card card-profile">
     							<div class="card-avatar">
-    								<a href="#pablo">
-    									<img class="img" src="../assets/img/faces/marc.jpg" />
+    								<a href="#admin">
+    									<img class="img" src="images/<?php echo $result['userpic']; ?>" />
     								</a>
     							</div>
 
-                  <div class="content">
+    							<div class="content">
     								<h6 class="category text-gray">CEO / Co-Founder</h6>
-    								<h4 class="card-title"><?php echo $result['name']; ?></h4>
+    								<h4 class="card-title">SUPERADMIN</h4>
     								<p class="card-content">
-    									Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
+    									I love coding
     								</p>
     								<a href="../../logout.php?logout" class="btn btn-primary btn-round">Logout</a>
     							</div>

@@ -12,7 +12,9 @@
  $conn = mysql_connect(DBHOST,DBUSER,DBPASS);
  $dbcon = mysql_select_db(DBNAME);
 
- if ( !$conn ) {
+$newconn = mysqli_connect("localhost","root","","db_boleh");
+
+ if ( !$conn || !$newconn) {
   die("Connection failed : " . mysql_error());
  }
 

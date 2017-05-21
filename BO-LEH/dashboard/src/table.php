@@ -56,7 +56,7 @@
 	                    </a>
 	                </li>
 	                <li>
-	                    <a href="user.php">
+	                    <a href="seller.php">
 	                        <i class="material-icons">person</i>
 	                        <p>User Profile</p>
 	                    </a>
@@ -66,37 +66,7 @@
 	                        <i class="material-icons">content_paste</i>
 	                        <p>Barang</p>
 	                    </a>
-	                </li>
-	                <li>
-	                    <a href="typography.php">
-	                        <i class="material-icons">library_books</i>
-	                        <p>Typography</p>
-	                    </a>
-	                </li>
-	                <li>
-	                    <a href="icons.php">
-	                        <i class="material-icons">bubble_chart</i>
-	                        <p>Icons</p>
-	                    </a>
-	                </li>
-	                <li>
-	                    <a href="maps.php">
-	                        <i class="material-icons">location_on</i>
-	                        <p>Maps</p>
-	                    </a>
-	                </li>
-	                <li>
-	                    <a href="notifications.php">
-	                        <i class="material-icons text-gray">notifications</i>
-	                        <p>Notifications</p>
-	                    </a>
-	                </li>
-					<li class="active-pro">
-                        <a href="usersdata.php">
-	                        <i class="material-icons">unarchive</i>
-	                        <p>Seller</p>
-	                    </a>
-                    </li>
+	                </li>					             
 	            </ul>
 	    	</div>
 		</div>
