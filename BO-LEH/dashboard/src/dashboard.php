@@ -2,6 +2,7 @@
 include "config.php";
 session_start();
 $id = $_SESSION['user'];
+$type = $_SESSION['type'];
 $query = mysqli_query($conn, "SELECT * FROM users WHERE id_user = $id" );
 $result = mysqli_fetch_array($query);
  ?>

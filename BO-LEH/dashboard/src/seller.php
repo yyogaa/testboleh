@@ -2,6 +2,7 @@
 include "config.php";
 session_start();
 $id = $_SESSION['user'];
+$type = $_SESSION['type'];
 $query = mysqli_query($conn, "SELECT * FROM users WHERE id_user = $id" );
 $result = mysqli_fetch_array($query);
  ?>
@@ -70,7 +71,7 @@ $result = mysqli_fetch_array($query);
 	                        <i class="material-icons">content_paste</i>
 	                        <p>Barang</p>
 	                    </a>
-	                </li>										
+	                </li>
 	            </ul>
 	    	</div>
 	    </div>
@@ -225,16 +226,16 @@ $result = mysqli_fetch_array($query);
 	                            </div>
 	                        </div>
 	                    </div>
-						<div class="col-md-4">
-    						<div class="card card-profile">
-    							<div class="card-avatar">
-    								<a href="#pablo">
-    									<img class="img" src="../assets/img/faces/marc.jpg" />
-    								</a>
-    							</div>
+											<div class="col-md-4">
+					    						<div class="card card-profile">
+					    							<div class="card-avatar">
+					    								<a href="#admin">
+					    									<img class="img" src="images/<?php echo $result['userpic']; ?>" />
+					    								</a>
+					    							</div>
 
     							<div class="content">
-    								<h6 class="category text-gray">CEO / Co-Founder</h6>
+    								<h6 class="category text-gray">Penjual</h6>
     								<h4 class="card-title"><?php echo $result['name']; ?></h4>
     								<p class="card-content">
     									Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
