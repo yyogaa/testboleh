@@ -2,9 +2,10 @@
  ob_start();
  session_start();
  require_once 'dbconnect.php';
- $sql = "SELECT * FROM items WHERE kode='1'";
+ $sql = "SELECT * FROM items WHERE type='0'";
  $qry_item = mysql_query($sql);
 ?>
+<!DOCTYPE html>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Makanan | E-Shopper</title>
+    <title>Login | BO-LEH</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/prettyPhoto.css" rel="stylesheet">
@@ -39,17 +40,19 @@
 					<div class="col-sm-6">
 						<div class="contactinfo">
 							<ul class="nav nav-pills">
-								<li><a href="#"><i class="fa fa-phone"></i> +6281122112211</a></li>
-								<li><a href="#"><i class="fa fa-envelope"></i> info@domain.com</a></li>
+								<li><a href=""><i class="fa fa-phone"></i> +2 95 01 88 821</a></li>
+								<li><a href=""><i class="fa fa-envelope"></i> info@domain.com</a></li>
 							</ul>
 						</div>
 					</div>
 					<div class="col-sm-6">
 						<div class="social-icons pull-right">
 							<ul class="nav navbar-nav">
-								<li><a href="facebook.com"><i class="fa fa-facebook"></i></a></li>
-								<li><a href="twitter.com"><i class="fa fa-twitter"></i></a></li>
-								<li><a href="instagram.com"><i class="fa fa-instagram"></i></a></li>
+								<li><a href=""><i class="fa fa-facebook"></i></a></li>
+								<li><a href=""><i class="fa fa-twitter"></i></a></li>
+								<li><a href=""><i class="fa fa-linkedin"></i></a></li>
+								<li><a href=""><i class="fa fa-dribbble"></i></a></li>
+								<li><a href=""><i class="fa fa-google-plus"></i></a></li>
 							</ul>
 						</div>
 					</div>
@@ -64,27 +67,42 @@
 						<div class="logo pull-left">
 							<a href="home.php"><img src="images/logo4.png" alt="" /></a>
 						</div>
+
 					</div>
-					<div class="col-sm-4">
-					</div>
-					<div class="col-sm-4">
+					<div class="col-sm-8">
 						<div class="shop-menu pull-right">
 							<ul class="nav navbar-nav">
+
                 <?php
                       if ( isset($_SESSION['user'])!="" ) {
-
+                        if ( $_SESSION['type']=="1" ){
                 ?>
-                <li><a href="akun.php"><i class="fa fa-user"></i> Account</a></li>
+                <li><a href="dashboard/src/seller.php"><i class="fa fa-user"></i> <?php echo $_SESSION['type'];  ?></a></li>
+                <li><a href="dashboard/src/seller.php"><i class="fa fa-user"></i> <?php echo $_SESSION['name'];  ?></a></li>
                 <li><a href="logout.php?logout"> Logout </a></li>
 
                 <?php
-                }else{
+              }else if($_SESSION['type']=="0"){
+                ?>
+                <li><a href="dashboard/src/user.php"><i class="fa fa-user"></i> <?php echo $_SESSION['type'];  ?></a></li>
+                <li><a href="dashboard/src/user.php"><i class="fa fa-user"></i> <?php echo $_SESSION['name'];  ?></a></li>
+                <li><a href="logout.php?logout"> Logout </a></li>
+                <?php
+              }else{
+                 ?>
+                 <li><a href="dashboard/src/superadmin.php"><i class="fa fa-user"></i> <?php echo $_SESSION['type'];  ?></a></li>
+                 <li><a href="dashboard/src/superadmin.php"><i class="fa fa-user"></i> <?php echo $_SESSION['name'];  ?></a></li>
+                 <li><a href="logout.php?logout"> Logout </a></li>
+                 <?php
+               }
+                  ?>
+                <?php } else {
                 ?>
                 <li><a href="signin.php" class="active"><i class="fa fa-lock"></i> Login </a></li>
-
-                <?php }
-                ?>
-							</ul>
+                <?php
+              }
+                 ?>
+              </ul>
 						</div>
 					</div>
 				</div>
@@ -115,6 +133,8 @@
 							</ul>
 						</div>
 					</div>
+
+
 					<div class="col-sm-3">
 						<div class="search_box pull-right">
 							<input type="text" placeholder="Search"/>
@@ -194,16 +214,26 @@
 							<div class="product-image-wrapper">
 								<div class="single-products">
 										<div class="productinfo text-center">
-                      <?php echo "<img src=coba/".$items['gambar_item'].">";?>
-											<h2>RP.<?php echo $items['harga']; ?></h2>
-											<p><?php echo $items['nama_item']; ?></p>
-											<a href="product-details.html" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                      <img src="dashboard/src/images/<?php echo $items['pic']; ?>" width="200" height="250" alt="" style="width:250px; margin-right:20px; margin-bottom:50px;" />
+											<h2>RP.<?php echo $items['price']; ?></h2>
+											<p><?php echo $items['item_name']; ?></p>
+                      <?php
+                        echo
+                        '<tr>
+                        <td><a href="prod-detail.php?id='.$items['id_item'].'" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Detail</a>
+                        </tr>'
+                      ?>
 										</div>
 										<div class="product-overlay">
 											<div class="overlay-content">
-												<h2>RP.<?php echo $items['harga']; ?></h2>
-												<p><?php echo $items['nama_item']; ?></p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+												<h2>RP.<?php echo $items['price']; ?></h2>
+												<p><?php echo $items['item_name']; ?></p>
+                        <?php
+                          echo
+                          '<tr>
+                          <td><a href="prod-detail.php?id='.$items['id_item'].'" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Detail</a>
+                          </tr>'
+                        ?>
 											</div>
 										</div>
 								</div>
@@ -218,6 +248,8 @@
             <?php
               }
             ?>
+
+            <div class="clearfix"> </div>
 						<ul class="pagination">
 							<li class="active"><a href="">1</a></li>
 							<li><a href="">2</a></li>
