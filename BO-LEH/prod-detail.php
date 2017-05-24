@@ -1,11 +1,13 @@
 <?php
 include "dbconnect.php";
 session_start();
-$itemid = $_SESSION['iditem'];
-$queryitem = mysql_query("SELECT * FROM items WHERE id_item = $itemid");
-$result = mysqli_fetch_array($queryitem);
- ?>
+$iditem = $_GET['id'];
+$sql = "SELECT * FROM items WHERE id_item = '$iditem' ";
+$qry= mysql_query($sql);
+$items = mysql_fetch_array($qry);
+?>
 
+<!DOCTYPE html>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +15,7 @@ $result = mysqli_fetch_array($queryitem);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Product Details | E-Shopper</title>
+    <title>Login | BO-LEH</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/prettyPhoto.css" rel="stylesheet">
@@ -40,17 +42,19 @@ $result = mysqli_fetch_array($queryitem);
 					<div class="col-sm-6">
 						<div class="contactinfo">
 							<ul class="nav nav-pills">
-								<li><a href="#"><i class="fa fa-phone"></i> +6281122112211</a></li>
-								<li><a href="#"><i class="fa fa-envelope"></i> info@domain.com</a></li>
+								<li><a href=""><i class="fa fa-phone"></i> +2 95 01 88 821</a></li>
+								<li><a href=""><i class="fa fa-envelope"></i> info@domain.com</a></li>
 							</ul>
 						</div>
 					</div>
 					<div class="col-sm-6">
 						<div class="social-icons pull-right">
 							<ul class="nav navbar-nav">
-								<li><a href="facebook.com"><i class="fa fa-facebook"></i></a></li>
-								<li><a href="twitter.com"><i class="fa fa-twitter"></i></a></li>
-								<li><a href="instagram.com"><i class="fa fa-instagram"></i></a></li>
+								<li><a href=""><i class="fa fa-facebook"></i></a></li>
+								<li><a href=""><i class="fa fa-twitter"></i></a></li>
+								<li><a href=""><i class="fa fa-linkedin"></i></a></li>
+								<li><a href=""><i class="fa fa-dribbble"></i></a></li>
+								<li><a href=""><i class="fa fa-google-plus"></i></a></li>
 							</ul>
 						</div>
 					</div>
@@ -63,16 +67,44 @@ $result = mysqli_fetch_array($queryitem);
 				<div class="row">
 					<div class="col-sm-4">
 						<div class="logo pull-left">
-							<a href="index_edit.html"><img src="images/images/logo4.png" alt="" /></a>
+							<a href="home.php"><img src="images/logo4.png" alt="" /></a>
 						</div>
+
 					</div>
-					<div class="col-sm-4">
-					</div>
-					<div class="col-sm-4">
+					<div class="col-sm-8">
 						<div class="shop-menu pull-right">
 							<ul class="nav navbar-nav">
-								<li><a href="login_edit.html"><i class="fa fa-lock"></i> Login</a></li>
-							</ul>
+
+                <?php
+                      if ( isset($_SESSION['user'])!="" ) {
+                        if ( $_SESSION['type']=="1" ){
+                ?>
+                <li><a href="dashboard/src/seller.php"><i class="fa fa-user"></i> <?php echo $_SESSION['type'];  ?></a></li>
+                <li><a href="dashboard/src/seller.php"><i class="fa fa-user"></i> <?php echo $_SESSION['name'];  ?></a></li>
+                <li><a href="logout.php?logout"> Logout </a></li>
+
+                <?php
+              }else if($_SESSION['type']=="0"){
+                ?>
+                <li><a href="dashboard/src/user.php"><i class="fa fa-user"></i> <?php echo $_SESSION['type'];  ?></a></li>
+                <li><a href="dashboard/src/user.php"><i class="fa fa-user"></i> <?php echo $_SESSION['name'];  ?></a></li>
+                <li><a href="logout.php?logout"> Logout </a></li>
+                <?php
+              }else{
+                 ?>
+                 <li><a href="dashboard/src/superadmin.php"><i class="fa fa-user"></i> <?php echo $_SESSION['type'];  ?></a></li>
+                 <li><a href="dashboard/src/superadmin.php"><i class="fa fa-user"></i> <?php echo $_SESSION['name'];  ?></a></li>
+                 <li><a href="logout.php?logout"> Logout </a></li>
+                 <?php
+               }
+                  ?>
+                <?php } else {
+                ?>
+                <li><a href="signin.php" class="active"><i class="fa fa-lock"></i> Login </a></li>
+                <?php
+              }
+                 ?>
+              </ul>
 						</div>
 					</div>
 				</div>
@@ -93,16 +125,18 @@ $result = mysqli_fetch_array($queryitem);
 						</div>
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
-								<li><a href="index_edit.html">Home</a></li>
+								<li><a href="home.php">Home</a></li>
 								<li class="dropdown"><a href="#">Kategori<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
-                                        <li><a href="shop_edit.html">Makanan</a></li>
-										<li><a href="shop_edit.html">Cinderamata</a></li>
+                                        <li><a href="makanan.php">Makanan</a></li>
+										<li><a href="cinderamata.php">Cinderamata</a></li>
                                     </ul>
                                 </li>
 							</ul>
 						</div>
 					</div>
+
+
 					<div class="col-sm-3">
 						<div class="search_box pull-right">
 							<input type="text" placeholder="Search"/>
@@ -175,7 +209,7 @@ $result = mysqli_fetch_array($queryitem);
 					<div class="product-details"><!--product-details-->
 						<div class="col-sm-5">
 							<div class="view-product">
-                <img src="images/<?php echo $result['pic']; ?>">
+                <img src="dashboard/src/images/<?php echo $items['pic']; ?>" width="250" height="250"/>
 								<!-- <img src="images/images/21.jpg" alt="" /> -->
 							</div>
 
@@ -183,18 +217,29 @@ $result = mysqli_fetch_array($queryitem);
 						</div>
 						<div class="col-sm-7">
 							<div class="product-information"><!--/product-information-->
-								<h2 class="title text-center">Talas Bogor Sangkuriang</h2>
-								<p>ID: 1089772</p>
-								<p>Desain kemasan yang modern dengan keju yang tebal dan rasa yang enak, membuat lapis talas ini paling kondang. Dengan harga Rp 33,000 rasa original talas, lapis talas sangkuriang ini masih bertahan dan jadi pilihan sejak pertama kali dipasarkan menjadi oleh-oleh bogor. Ya, lapis talas ini adalah yang pertama di bogor dan saat ini menjadi yang terbesar.</p>
+								<h2 class="title text-center"><?php echo $items['item_name']; ?></h2>
+								<p><?php echo $items['description']; ?></p>
 								<img src="images/product-details/rating.png" alt="" />
-								<span>
-									<span>Rp. 30.000</span>
-									<label>Quantity:</label>
-									<input type="text" value="3" />
-									<button type="button" class="btn btn-fefault cart">
-										<i class="fa fa-shopping-cart"></i>
-										Add to cart
-									</button>
+								<br/>
+                <span>
+									<span>RP.<?php echo $items['price']; ?></span>
+
+                  <?php
+                    if ( isset($_SESSION['user'])!="" ) {
+                  ?>
+                  <a href="order.php?id=<?php echo $items['id_item'];?>" class="btn btn-default cart"><i class="fa fa-shopping-cart"></i>Order</a>
+                  <?php
+                    }else{
+                  ?>
+                  <td><a href="signin.php" class="btn btn-default cart"><i class="fa fa-shopping-cart"></i>Order</a>
+                  <?php
+                  }
+                  ?>
+
+                <!--  '<tr>
+                  <td><a href="order.php?id='.$items['id_item'].'" class="btn btn-default cart"><i class="fa fa-shopping-cart"></i>Order</a>
+                  </tr>' -->
+
 								</span>
 								<p><b>Availability:</b> In Stock</p>
 								<p><b>Condition:</b> New</p>

@@ -184,7 +184,7 @@
 
 							<div class="item">
 								<div class="col-sm-6">
-									<h1><span>BO</span>-LER</h1>
+									<h1><span>BO</span>-LEH</h1>
 									<h2>Free Ecommerce Template</h2>
 									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
 									<button type="button" class="btn btn-default get">Get it now</button>
@@ -358,23 +358,39 @@
 						<h2 class="title text-center">Features Items</h2>
             <?php
             $count = 1;
+<<<<<<< HEAD
             while($items = mysql_fetch_array($qry_item, MYSQLI_ASSOC)){
+=======
+            while($items = mysql_fetch_array($qry_item)){
+>>>>>>> refs/remotes/origin/master
               $_SESSION['iditem'] = $items['id_item'];
             ?>
 						<div class="col-sm-4">
 							<div class="product-image-wrapper">
 								<div class="single-products">
 										<div class="productinfo text-center">
-                      <?php echo "<img src=dashboard/src/images/".$items['pic'].">";?>
+                      <img src="dashboard/src/images/<?php echo $items['pic']; ?>" width="200" height="250" alt="" style="width:250px; margin-right:20px; margin-bottom:50px;" />
+
 											<h2>RP.<?php echo $items['price']; ?></h2>
 											<p><?php echo $items['item_name']; ?></p>
-											<a href="detailsproduct.php" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                      <?php
+                        echo
+                        '<tr>
+                        <td><a href="prod-detail.php?id='.$items['id_item'].'" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Detail</a>
+                        </tr>'
+                      ?>
 										</div>
 										<div class="product-overlay">
 											<div class="overlay-content">
 												<h2>RP.<?php echo $items['price']; ?></h2>
 												<p><?php echo $items['item_name']; ?></p>
-												<a type="hidden" href="prod-detail.php" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                        <?php
+                          echo
+                          '<tr>
+                          <td><a href="prod-detail.php?id='.$items['id_item'].'" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Detail</a>
+                          </tr>'
+                        ?>
+
 											</div>
 										</div>
 								</div>
