@@ -110,11 +110,14 @@ $result = mysqli_fetch_array($query);
 									<li><a href="#">Another One</a></li>
 								</ul>
 							</li>
-							<li>
+              <li>
 								<a href="#pablo" class="dropdown-toggle" data-toggle="dropdown">
 	 							   <i class="material-icons">person</i>
 	 							   <p class="hidden-lg hidden-md">Profile</p>
 	 						   </a>
+								 <ul class="dropdown-menu">
+ 									<li><a href="../../logout.php?logout">Logout</a></li>
+ 								</ul>
 							</li>
 						</ul>
 
@@ -141,82 +144,42 @@ $result = mysqli_fetch_array($query);
 									<p class="category">Complete your profile</p>
 	                            </div>
 	                            <div class="card-content">
-	                                <form>
+	                                <form  action="modules/editprofile.php" method="POST">
+                                      <input type="hidden" name="id" value="<?php echo $result['id_user'];?>">
 	                                    <div class="row">
-	                                        <div class="col-md-5">
-												<div class="form-group label-floating">
-													<label class="control-label">Company (disabled)</label>
-													<input type="text" class="form-control" disabled>
-												</div>
-	                                        </div>
-	                                        <div class="col-md-3">
-												<div class="form-group label-floating">
-													<label class="control-label">Username</label>
-													<input type="text" class="form-control" >
-												</div>
-	                                        </div>
-	                                        <div class="col-md-4">
-												<div class="form-group label-floating">
-													<label class="control-label">Email address</label>
-													<input type="email" class="form-control" >
-												</div>
+
+	                                        <div class="col-md-6">
+                    												<div class="form-group label-floating">
+                    													<label class="control-label">Email address</label>
+                    													<input type="email" name="email" class="form-control" value="<?php echo $result['email']; ?> ">
+                    												</div>
 	                                        </div>
 	                                    </div>
 
 	                                    <div class="row">
-	                                        <div class="col-md-6">
-												<div class="form-group label-floating">
-													<label class="control-label">Fist Name</label>
-													<input type="text" class="form-control" >
-												</div>
-	                                        </div>
-	                                        <div class="col-md-6">
-												<div class="form-group label-floating">
-													<label class="control-label">Last Name</label>
-													<input type="text" class="form-control" >
-												</div>
+	                                      <div class="col-md-6">
+                    												<div class="form-group label-floating">
+                    													<label class="control-label">Nama Anda</label>
+                    													<input type="text" name= "name" class="form-control" value="<?php echo $result['name']; ?>">
+                    												</div>
 	                                        </div>
 	                                    </div>
 
 	                                    <div class="row">
 	                                        <div class="col-md-12">
-												<div class="form-group label-floating">
-													<label class="control-label">Adress</label>
-													<input type="text" class="form-control" >
-												</div>
+                    												<div class="form-group label-floating">
+                    													<label class="control-label">Alamat</label>
+                    													<input type="text" name="address" class="form-control" value="<?php echo $result['address']; ?>">
+                    												</div>
 	                                        </div>
 	                                    </div>
 
 	                                    <div class="row">
-	                                        <div class="col-md-4">
-												<div class="form-group label-floating">
-													<label class="control-label">City</label>
-													<input type="text" class="form-control" >
-												</div>
-	                                        </div>
-	                                        <div class="col-md-4">
-												<div class="form-group label-floating">
-													<label class="control-label">Country</label>
-													<input type="text" class="form-control" >
-												</div>
-	                                        </div>
-	                                        <div class="col-md-4">
-												<div class="form-group label-floating">
-													<label class="control-label">Postal Code</label>
-													<input type="text" class="form-control" >
-												</div>
-	                                        </div>
-	                                    </div>
-
-	                                    <div class="row">
-	                                        <div class="col-md-12">
-	                                            <div class="form-group">
-	                                                <label>About Me</label>
-													<div class="form-group label-floating">
-									    				<label class="control-label"> Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</label>
-								    					<textarea class="form-control" rows="5"></textarea>
-		                        					</div>
-	                                            </div>
+	                                        <div class="col-md-6">
+                    												<div class="form-group label-floating">
+                    													<label class="control-label">No Telepon</label>
+                    													<input type="number" name="phone" min= 0 class="form-control" value="<?php echo $result['phone']; ?>" >
+                    												</div>
 	                                        </div>
 	                                    </div>
 
@@ -237,9 +200,7 @@ $result = mysqli_fetch_array($query);
     							<div class="content">
     								<h6 class="category text-gray">Penjual</h6>
     								<h4 class="card-title"><?php echo $result['name']; ?></h4>
-    								<p class="card-content">
-    									Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
-    								</p>
+    								<a href="changepic.php" class="btn btn-primary btn-round">Ganti Foto</a><br>
     								<a href="../../logout.php?logout" class="btn btn-primary btn-round">Logout</a>
     							</div>
     						</div>

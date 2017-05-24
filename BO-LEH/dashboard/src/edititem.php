@@ -2,6 +2,7 @@
 include "config.php";
 $id = $_GET['id'];
 $query = mysqli_query($conn, "SELECT * FROM items WHERE id_item = '$id' ");
+$result = mysqli_fetch_array($query);
  ?>
 
 <!doctype html>
@@ -59,47 +60,17 @@ $query = mysqli_query($conn, "SELECT * FROM items WHERE id_item = '$id' ");
 	                    </a>
 	                </li>
 	                <li>
-	                    <a href="user.php">
+	                    <a href="seller.php">
 	                        <i class="material-icons">person</i>
 	                        <p>User Profile</p>
 	                    </a>
 	                </li>
-	                <li>
+	                <li class="active">
 	                    <a href="table.php">
 	                        <i class="material-icons">content_paste</i>
 	                        <p>Barang</p>
 	                    </a>
 	                </li>
-	                <li>
-	                    <a href="typography.php">
-	                        <i class="material-icons">library_books</i>
-	                        <p>Typography</p>
-	                    </a>
-	                </li>
-	                <li>
-	                    <a href="icons.php">
-	                        <i class="material-icons">bubble_chart</i>
-	                        <p>Icons</p>
-	                    </a>
-	                </li>
-	                <li>
-	                    <a href="maps.php">
-	                        <i class="material-icons">location_on</i>
-	                        <p>Maps</p>
-	                    </a>
-	                </li>
-	                <li>
-	                    <a href="notifications.php">
-	                        <i class="material-icons text-gray">notifications</i>
-	                        <p>Notifications</p>
-	                    </a>
-	                </li>
-                    <li class="active active-pro">
-                        <a href="usersdata.php">
-	                        <i class="material-icons">unarchive</i>
-	                        <p>Seller</p>
-	                    </a>
-                    </li>
 	            </ul>
 	    	</div>
 	    </div>
@@ -114,7 +85,7 @@ $query = mysqli_query($conn, "SELECT * FROM items WHERE id_item = '$id' ");
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href="#">Upgrade</a>
+						<h4 >Item Detail</h4>
 					</div>
 					<div class="collapse navbar-collapse">
 						<ul class="nav navbar-nav navbar-right">
@@ -168,70 +139,124 @@ $query = mysqli_query($conn, "SELECT * FROM items WHERE id_item = '$id' ");
 														 <h4 class="title">Barang Anda</h4>
 														 <p class="category">Silahkan Sesuaikan Barang Anda</p>
 												 </div>
-												 <div class="card-content table-responsive">
+                             <div class="card-content table-responsive">
+                              <form method="post" action="modules/edititem_process.php" enctype="multipart/form-data">
+                                <div class="col-md-6">
+                                  <table>
+                                    <thead>
+                                      <td></td>
+                                      <td></td>
+                                    </thead>
+                                    <tbody>
+                                      <!-- editproses untuk edit -->
+                                      <input type="hidden" name="id" value="<?php echo $result['id'];?>">
+                                      <!--Pass : <input type="password" name="passmhs" value="<?php echo $result ['pass'];?>" required><br><br>-->
+                                         <div class="col-sm-3">
+                                           <div class="form-group">
+                                               <tr>
+                                                 <td>Nama Barang :  </td>
+                                                 <td><input type="text" name="item_name" placeholder = "Masukkan Nama Barang Anda" class="form-control" value="<?php echo $result['item_name'];?>" required></td>
+                                               </tr>
+                                           </div>
+                                         </div>
 
+                                         <div class="col-sm-3">
+                                           <div class="form-group">
+                                               <tr>
+                                                 <td>Harga : </td>
+                                                 <td><input type="number" min = 0 name="item_price" placeholder = "Masukkan Harga Barang Anda" class="form-control" value="<?php echo $result['price'];?>" required></td>
+                                               </tr>
+                                           </div>
+                                         </div>
 
-																 <tbody>
-                                   <?php
-                                   $result = mysqli_fetch_array($query);
-                                    ?>
-                                   <form  action="modules/edititem_process.php" method="POST"> <!-- editproses untuk edit -->
-                                     <input type="hidden" name="id" value="<?php echo $result['id'];?>">
-                                     <!--Pass : <input type="password" name="passmhs" value="<?php echo $result ['pass'];?>" required><br><br>-->
-                                     Nama Barang : <input type="text" name="name" value="<?php echo $result['item_name'];?>" required><br><br>
-                                     Harga : <input type="number" min= 0 name="price" value="<?php echo $result['price'];?>" required><br><br>
-                                     Type : <select class="" name="category">
-                                        <option value="0">Makanan</option>
-                                        <option value="1">Merchandise</option>
-                                        </select>
-                                        <br><br>
-                                    Deskripsi : <textarea cols="40" rows="5" name="description" ><?php echo $result['description'];?></textarea>
-                                    <br><br>
-                                        <td><input type="submit" name="submit" /></td>
-                                       </form>
+                                           <div class="col-sm-3">
+                                             <div class="dropdown">
+                                                   <tr>
+                                                     <td>Kategori</td>
+                                                     <td><select class="dropdown-toggle" name="category">
+                                                        <option value="0">Makanan</option>
+                                                        <option value="1">Merchandise</option>
+                                                        </select>
+                                                     </td>
+                                                   </tr>
+                                             </div>
+                                           </div>
 
-																	 <!-- SHOWING TABLE -->
-
-																 </tbody>
-
-												 </div>
-										 </div>
-								 </div>
-
-	        <footer class="footer">
-	            <div class="container-fluid">
-	                <nav class="pull-left">
-	                    <ul>
-	                        <li>
-	                            <a href="#">
-	                                Home
-	                            </a>
-	                        </li>
-	                        <li>
-	                            <a href="#">
-	                                Company
-	                            </a>
-	                        </li>
-	                        <li>
-	                            <a href="#">
-	                                Portfolio
-	                            </a>
-	                        </li>
-	                        <li>
-	                            <a href="#">
-	                               Blog
-	                            </a>
-	                        </li>
-	                    </ul>
-	                </nav>
-	                <p class="copyright pull-right">
-	                    &copy; <script>document.write(new Date().getFullYear())</script> <a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a better web
-	                </p>
-	            </div>
-	        </footer>
-	    </div>
-	</div>
-
+                                           <div class="col-sm-3">
+                                             <div class="form-group">
+                                                 <tr>
+                                                   <td>Deskripsi : </td>
+                                                   <td><textarea class="form-control" cols="60" rows="3" name="description" placeholder="Silahkan Masukan Deskripsi Barang Anda" rows="5"><?php echo $result['description'];?></textarea>
+                                                 </tr>
+                                             </div>
+                                           </div>
+                                       </tbody>
+                                  </table>
+                                </div>
+                                <div class="col-md-2">
+                                </div>
+                                <div class="col-md-4">
+                                  <table>
+                                   <thead>
+                                   </thead>
+                                   <tbody>
+                                     <tr>
+                                       <td><img src="images/<?php echo $result['pic'];?>"></td>
+                                     </tr>
+                                     <tr>
+                                       <td>Change Item Picture</td>
+                                     </tr>
+                                     <tr>
+                                       <td><input type="file" name="pict" class="btn btn-primary"></td>
+                                     </tr>
+                                   </tbody>
+                               </table>
+                             </div>
+                                <div class="col-sm-3">
+                                   <tr>
+                                     <td><button type="submit" class="btn btn-primary" name="submit">Submit</button></td>
+                                   </tr>
+                                 </div>
+                           </form>
+										</div>
+									 </div>
+								  </div>
+	              </div>
+	             </div>
+             </div>
+        <footer class="footer">
+            <div class="container-fluid">
+                <nav class="pull-left">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                Home
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Company
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Portfolio
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                               Blog
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <p class="copyright pull-right">
+                    &copy; <script>document.write(new Date().getFullYear())</script> <a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a better web
+                </p>
+            </div>
+        </footer>
+      </div>
+    </div>
 </body>
 
 	<!--   Core JS Files   -->

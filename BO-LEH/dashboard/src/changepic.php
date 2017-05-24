@@ -3,8 +3,10 @@ include "config.php";
 session_start();
 $id = $_SESSION['user'];
 $type = $_SESSION['type'];
-
+$query = mysqli_query($conn, "SELECT * FROM users WHERE id_user = $id" );
+$result = mysqli_fetch_array($query);
  ?>
+
 
 <!doctype html>
 <html lang="en">
@@ -39,17 +41,16 @@ $type = $_SESSION['type'];
 	<div class="wrapper">
 	    <div class="sidebar" data-color="purple" data-image="../assets/img/sidebar-1.jpg">
 			<!--
-	        Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
-		    Tip 2: you can also add an image using data-image tag
+		        Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
 
-			-->
+		        Tip 2: you can also add an image using data-image tag
+		    -->
 
 			<div class="logo">
 				<a href="..\..\home.php" class="simple-text">
 					BOLEH
 				</a>
 			</div>
-
 
 	    	<div class="sidebar-wrapper">
 				<ul class="nav">
@@ -59,13 +60,13 @@ $type = $_SESSION['type'];
 	                        <p>Dashboard</p>
 	                    </a>
 	                </li>
-	                <li>
+	                <li class="active">
 	                    <a href="seller.php">
 	                        <i class="material-icons">person</i>
 	                        <p>User Profile</p>
 	                    </a>
 	                </li>
-	                <li class="active">
+	                <li>
 	                    <a href="table.php">
 	                        <i class="material-icons">content_paste</i>
 	                        <p>Barang</p>
@@ -73,7 +74,7 @@ $type = $_SESSION['type'];
 	                </li>
 	            </ul>
 	    	</div>
-		</div>
+	    </div>
 
 	    <div class="main-panel">
 			<nav class="navbar navbar-transparent navbar-absolute">
@@ -85,7 +86,7 @@ $type = $_SESSION['type'];
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href="#">Barang</a>
+						<a class="navbar-brand" href="#">Profile</a>
 					</div>
 					<div class="collapse navbar-collapse">
 						<ul class="nav navbar-nav navbar-right">
@@ -135,53 +136,34 @@ $type = $_SESSION['type'];
 
 	        <div class="content">
 	            <div class="container-fluid">
-	                <div class="row">
-	                    <div class="col-md-12">
-	                        <div class="card">
-	                            <div class="card-header" data-background-color="purple">
-	                                <h4 class="title">Barang Anda</h4>
-	                                <p class="category">Silahkan Sesuaikan Barang Anda</p>
-	                            </div>
-	                            <div class="card-content table-responsive">
-	                                <table class="table">
-	                                    <thead class="text-primary">
-																				<th>No</th>
-	                                    	<th>Nama Barang</th>
-	                                    	<th>Harga</th>
-	                                    	<th>Kuantitas</th>
-																				<th></th>
-																				<th>Action</th>
-																				<th></th>
-	                                    </thead>
-	                                    <tbody>
-																				<!-- SHOWING TABLE -->
-	                                        <?php
-																					$query = mysqli_query($conn, "SELECT * FROM items");
-																					$count = 1;
+                <form class="" action="index.html" method="post">
+                  <div class="col-md-2">
+                  </div>
+  	                <div class="row">
+  											<div class="col-md-8">
+  					    						<div class="card card-profile">
+  					    							<div class="card-avatar">
+  					    								<a href="#admin">
+  					    									<img class="img" src="images/<?php echo $result['userpic']; ?>" />
+  					    								</a>
+  					    							</div>
 
-																					while($result = mysqli_fetch_array($query)){ //selama masih bisa fetch data
-																						echo
-																						'<tr>
-																							<td>'.$count++.'</td>
-																							<td>'.$result['item_name'].'</td>
-																							<td>'.$result['price'].'</td>
-                                              <td><img src="images/'.$result['pic'].'"></td>
-																							<td> </td>
-																							<td><a href="edititem.php?id='.$result['id_item'].'"><button type="button" class="btn btn-primary">Edit</button></a></td>
-																							<td><a href="deleteitem.php?id='.$result['id_item'].'"><button type="button" class="btn btn-danger">Delete</button></a></td>
-																						</tr>';
-																					}
+              							<div class="content">
+              								<h6 class="category text-gray">Penjual</h6>
+              								<h4 class="card-title"><?php echo $result['name']; ?></h4>
+                              <h4 class="card-title btn btn-primary"><input type="file" name="pict" class="btn btn-primary"></td></h4><br>
+                              <button type="submit" class="btn btn-primary" name="submit">Submit</button>
 
-																					 ?>
+                            </div>
+              						</div>
+          		    			</div>
+  	                </div>
+                      <div class="col-md-2">
+                      </div>
+                </form>
 
-																					<tr>
-																						<td><a href="additem.php"> <button type="button" class="btn btn primary">Tambah</button></a></td>
-																					</tr>
-	                                    </tbody>
-	                                </table>
-	                            </div>
-	                        </div>
-	                    </div>
+	            </div>
+	        </div>
 
 	        <footer class="footer">
 	            <div class="container-fluid">

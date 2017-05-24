@@ -32,11 +32,3 @@ else{
 }
 mysqli_close($conn);
  ?>
-
- ?>
-
-}
-
-
-
- ?>

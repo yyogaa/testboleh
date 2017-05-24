@@ -96,13 +96,22 @@ $result = mysqli_fetch_array($query);
 									'';
 								}
 									 ?>
-									 <li>
-                     <a href="transaction.php">
-                       <i class="material-icons">content_paste</i>
-                       <p>Transaksi Saya</p>
-                     </a>
 
-                   </li>
+                   <?php
+ 									if ($_SESSION['type'] == 0 ){
+ 									 echo
+ 	                '<li>
+                    <a href="transaction.php">
+                      <i class="material-icons">content_paste</i>
+                      <p>Transaksi Saya</p>
+                    </a>
+
+                  </li>';
+ 								}else{
+ 									echo
+ 									'';
+ 								}
+ 									 ?>
 	            </ul>
 	    	</div>
 	    </div>

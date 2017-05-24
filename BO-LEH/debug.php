@@ -10,10 +10,11 @@ include "dashboard/src/config.php";
   echo ' <br> ';
   echo $_SESSION['user'];
   echo ' <br> ';
+
   if (isset($_SESSION['iditem'])) {
     echo $_SESSION['iditem'];
   }
-
+  echo ' <br> ';
   echo $result['userpic'];
 
  ?>
