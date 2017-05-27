@@ -138,10 +138,17 @@ $type = $_SESSION['type'];
 	                <div class="row">
 	                    <div class="col-md-12">
 	                        <div class="card">
-	                            <div class="card-header" data-background-color="purple">
-	                                <h4 class="title">Barang Anda</h4>
+                            <div class="card-header col-md-12" data-background-color="purple">
+                                <div class="col-md-4">
+                                  <h4 class="title">Barang Anda</h4>
 	                                <p class="category">Silahkan Sesuaikan Barang Anda</p>
-	                            </div>
+                                </div>
+                                <div class="col-md-4">
+                                </div>
+                                <div class="col-md-4" data-background-color="white">
+                                  <a href="additem.php"> <button type="button" class="btn btn-info">Tambah</button></a>
+                                </div>
+                            </div>
 	                            <div class="card-content table-responsive">
 	                                <table class="table">
 	                                    <thead class="text-primary">
@@ -165,7 +172,7 @@ $type = $_SESSION['type'];
 																							<td>'.$count++.'</td>
 																							<td>'.$result['item_name'].'</td>
 																							<td>'.$result['price'].'</td>
-                                              <td><img src="images/'.$result['pic'].'"></td>
+                                              <td><img src="images/'.$result['pic'].'" width="200" height="250" alt="" style="width:250px; margin-right:20px; margin-bottom:50px;"></td>
 																							<td> </td>
 																							<td><a href="edititem.php?id='.$result['id_item'].'"><button type="button" class="btn btn-primary">Edit</button></a></td>
 																							<td><a href="deleteitem.php?id='.$result['id_item'].'"><button type="button" class="btn btn-danger">Delete</button></a></td>

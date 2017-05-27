@@ -144,7 +144,7 @@ $result = mysqli_fetch_array($query);
 									<p class="category">Complete your profile</p>
 	                            </div>
 	                            <div class="card-content">
-	                                <form  action="modules/editprofile.php" method="POST">
+	                                <form  action="modules/editprofileseller.php" method="POST">
                                       <input type="hidden" name="id" value="<?php echo $result['id_user'];?>">
 	                                    <div class="row">
 

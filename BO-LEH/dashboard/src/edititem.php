@@ -149,8 +149,8 @@ $result = mysqli_fetch_array($query);
                                     </thead>
                                     <tbody>
                                       <!-- editproses untuk edit -->
-                                      <input type="hidden" name="id" value="<?php echo $result['id'];?>">
-                                      <!--Pass : <input type="password" name="passmhs" value="<?php echo $result ['pass'];?>" required><br><br>-->
+                                      <input type="hidden" name="id" value="<?php echo $result['id_item'];?>">
+                                          
                                          <div class="col-sm-3">
                                            <div class="form-group">
                                                <tr>
@@ -207,7 +207,7 @@ $result = mysqli_fetch_array($query);
                                        <td>Change Item Picture</td>
                                      </tr>
                                      <tr>
-                                       <td><input type="file" name="pict" class="btn btn-primary"></td>
+                                       <td><input type="file" name="pict" class="btn btn-primary" ></td>
                                      </tr>
                                    </tbody>
                                </table>

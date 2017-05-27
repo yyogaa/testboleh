@@ -136,7 +136,8 @@ $result = mysqli_fetch_array($query);
 
 	        <div class="content">
 	            <div class="container-fluid">
-                <form class="" action="index.html" method="post">
+                <form action="modules/changepic_process.php" method="post" enctype="multipart/form-data">
+                  <input type="hidden" name="id" value="<?php echo $result['id_user'];?>">
                   <div class="col-md-2">
                   </div>
   	                <div class="row">
@@ -153,6 +154,7 @@ $result = mysqli_fetch_array($query);
               								<h4 class="card-title"><?php echo $result['name']; ?></h4>
                               <h4 class="card-title btn btn-primary"><input type="file" name="pict" class="btn btn-primary"></td></h4><br>
                               <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+
 
                             </div>
               						</div>

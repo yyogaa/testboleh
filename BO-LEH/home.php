@@ -358,11 +358,9 @@
 						<h2 class="title text-center">Features Items</h2>
             <?php
             $count = 1;
-<<<<<<< HEAD
-            while($items = mysql_fetch_array($qry_item, MYSQLI_ASSOC)){
-=======
+
             while($items = mysql_fetch_array($qry_item)){
->>>>>>> refs/remotes/origin/master
+
               $_SESSION['iditem'] = $items['id_item'];
             ?>
 						<div class="col-sm-4">

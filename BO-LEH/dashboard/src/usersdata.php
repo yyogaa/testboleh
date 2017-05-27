@@ -139,7 +139,7 @@
 																	 <!-- SHOWING TABLE -->
 																		 <?php
 																		 include "config.php";
-																		 $query = mysqli_query($conn, "SELECT * FROM users");
+																		 $query = mysqli_query($conn, "SELECT * FROM users WHERE code != 2");
 																		 $count = 1;
 
 																		 while($result = mysqli_fetch_array($query)){ //selama masih bisa fetch data
