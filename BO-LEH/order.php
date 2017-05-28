@@ -190,7 +190,7 @@ $items = mysql_fetch_array($qry);
 							</td>
 							<td>
 								<a href="prod_detail.php?" class="btn btn-default cart">Cancel</a> 
-								<a href="prod_detail.php?" class="btn btn-default cart">Next</a> 
+								<a href="order-info.html" class="btn btn-default cart">Next</a> 
 							</td>
 						</tr>
 
