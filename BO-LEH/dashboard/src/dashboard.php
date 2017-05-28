@@ -112,6 +112,21 @@ $result = mysqli_fetch_array($query);
  									'';
  								}
  									 ?>
+                   <?php
+                   if ($_SESSION['type'] == 1 ){
+                    echo
+                   '<li>
+                       <a href="orders.php">
+                           <i class="material-icons">library_books</i>
+                           <p>Order Saya</p>
+                       </a>
+                   </li>';
+                 }else{
+                   echo
+                   '';
+                 }
+                    ?>
+
 	            </ul>
 	    	</div>
 	    </div>

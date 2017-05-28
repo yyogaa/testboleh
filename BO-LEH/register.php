@@ -248,7 +248,7 @@
 							<td><input type="email" class="form-control" name="email" placeholder="Masukan Email Anda" max length="50" value="<?php echo $email ?>"/><span class="text-danger"><?php echo $emailError; ?></span></td>
 							<td><input type="password" class="form-control" name="pass" placeholder="Masukan Password" max length="20"/><span class="text-danger"><?php echo $passError; ?></span></td>
               <td><input type="text" class="form-control" name="alamat" placeholder="Masukan alamat" max length="100" value="<?php echo $alamat ?>"/></td>
-              <td><input type="number" class="form-control" name="nohp" placeholder="Masukan Nomor Telepon" max length="12" value="<?php echo $nohp ?>"/></td>
+              <td><input type="number" onkeypress="return event.charCode >=48" class="form-control" name="nohp" placeholder="Masukan Nomor Telepon" max length="12" value="<?php echo $nohp ?>"/></td>
 							<button type="submit" class="btn btn-default" name='btn-signup'>Daftar</button>
 						</form>
 					</div><!--/login form-->

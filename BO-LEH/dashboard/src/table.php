@@ -71,6 +71,12 @@ $type = $_SESSION['type'];
 	                        <p>Barang</p>
 	                    </a>
 	                </li>
+                  <li>
+	                    <a href="orders.php">
+	                        <i class="material-icons">library_books</i>
+	                        <p>Order Saya</p>
+	                    </a>
+	                </li>
 	            </ul>
 	    	</div>
 		</div>
@@ -145,7 +151,7 @@ $type = $_SESSION['type'];
                                 </div>
                                 <div class="col-md-4">
                                 </div>
-                                <div class="col-md-4" data-background-color="white">
+                                <div class="col-md-4 col-md-push-2" data-background-color="white">
                                   <a href="additem.php"> <button type="button" class="btn btn-info">Tambah</button></a>
                                 </div>
                             </div>
@@ -156,22 +162,24 @@ $type = $_SESSION['type'];
 	                                    	<th>Nama Barang</th>
 	                                    	<th>Harga</th>
 	                                    	<th>Kuantitas</th>
-																				<th></th>
+                                        <th>Gambar</th>
 																				<th>Action</th>
 																				<th></th>
 	                                    </thead>
 	                                    <tbody>
 																				<!-- SHOWING TABLE -->
 	                                        <?php
-																					$query = mysqli_query($conn, "SELECT * FROM items");
-																					$count = 1;
+																					$query = mysqli_query($conn, "SELECT * FROM items JOIN has_item ON has_item.id_item = items.id_item WHERE id_user = $id");
+                                          $count = 1;
 
 																					while($result = mysqli_fetch_array($query)){ //selama masih bisa fetch data
-																						echo
+
+                                            echo
 																						'<tr>
 																							<td>'.$count++.'</td>
 																							<td>'.$result['item_name'].'</td>
 																							<td>'.$result['price'].'</td>
+                                              <td>'.$result['quantity'].'</td>
                                               <td><img src="images/'.$result['pic'].'" width="200" height="250" alt="" style="width:250px; margin-right:20px; margin-bottom:50px;"></td>
 																							<td> </td>
 																							<td><a href="edititem.php?id='.$result['id_item'].'"><button type="button" class="btn btn-primary">Edit</button></a></td>
@@ -180,10 +188,6 @@ $type = $_SESSION['type'];
 																					}
 
 																					 ?>
-
-																					<tr>
-																						<td><a href="additem.php"> <button type="button" class="btn btn primary">Tambah</button></a></td>
-																					</tr>
 	                                    </tbody>
 	                                </table>
 	                            </div>

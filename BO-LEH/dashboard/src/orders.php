@@ -3,11 +3,8 @@ include "config.php";
 session_start();
 $id = $_SESSION['user'];
 $type = $_SESSION['type'];
-$query = mysqli_query($conn, "SELECT * FROM users WHERE id_user = $id" );
-$result = mysqli_fetch_array($query);
 
  ?>
-
 
 <!doctype html>
 <html lang="en">
@@ -42,16 +39,17 @@ $result = mysqli_fetch_array($query);
 	<div class="wrapper">
 	    <div class="sidebar" data-color="purple" data-image="../assets/img/sidebar-1.jpg">
 			<!--
-		        Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
+	        Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
+		    Tip 2: you can also add an image using data-image tag
 
-		        Tip 2: you can also add an image using data-image tag
-		    -->
+			-->
 
 			<div class="logo">
 				<a href="..\..\home.php" class="simple-text">
 					BOLEH
 				</a>
 			</div>
+
 
 	    	<div class="sidebar-wrapper">
 				<ul class="nav">
@@ -61,50 +59,27 @@ $result = mysqli_fetch_array($query);
 	                        <p>Dashboard</p>
 	                    </a>
 	                </li>
-                  <?php
-									if ($_SESSION['type'] == 1 ){
-									 echo
-	                '<li>
+	                <li>
 	                    <a href="seller.php">
 	                        <i class="material-icons">person</i>
 	                        <p>User Profile</p>
 	                    </a>
-	                </li>';
-								}else{
-									echo
-									'<li>
-	                    <a href="user.php">
-	                        <i class="material-icons">person</i>
-	                        <p>User Profile</p>
-	                    </a>
-	                </li>';
-								}
-									 ?>
-
-									<?php
-									if ($_SESSION['type'] == 1 ){
-									 echo
-	                '<li>
+	                </li>
+	                <li>
 	                    <a href="table.php">
 	                        <i class="material-icons">content_paste</i>
 	                        <p>Barang</p>
 	                    </a>
-	                </li>';
-								}else{
-									echo
-									'';
-								}
-									 ?>
-                   <li>
-                     <a href="transaction.php">
-                       <i class="material-icons">content_paste</i>
-                       <p>Transaksi Saya</p>
-                     </a>
-
-                   </li>
+	                </li>
+                  <li class="active">
+	                    <a href="orders.php">
+	                        <i class="material-icons">library_books</i>
+	                        <p>Order Saya</p>
+	                    </a>
+	                </li>
 	            </ul>
 	    	</div>
-	    </div>
+		</div>
 
 	    <div class="main-panel">
 			<nav class="navbar navbar-transparent navbar-absolute">
@@ -116,7 +91,7 @@ $result = mysqli_fetch_array($query);
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href="#">Profile</a>
+						<a class="navbar-brand" href="#">Order</a>
 					</div>
 					<div class="collapse navbar-collapse">
 						<ul class="nav navbar-nav navbar-right">
@@ -140,6 +115,15 @@ $result = mysqli_fetch_array($query);
 									<li><a href="#">Another One</a></li>
 								</ul>
 							</li>
+              <li>
+								<a href="#pablo" class="dropdown-toggle" data-toggle="dropdown">
+	 							   <i class="material-icons">person</i>
+	 							   <p class="hidden-lg hidden-md">Profile</p>
+	 						   </a>
+								 <ul class="dropdown-menu">
+ 									<li><a href="../../logout.php?logout">Logout</a></li>
+ 								</ul>
+							</li>
 						</ul>
 
 						<form class="navbar-form navbar-right" role="search">
@@ -155,80 +139,23 @@ $result = mysqli_fetch_array($query);
 				</div>
 			</nav>
 
-      <div class="content">
-          <div class="container-fluid">
-              <div class="row">
-                  <div class="col-md-8">
-                      <div class="card">
-                          <div class="card-header" data-background-color="purple">
-                              <h4 class="title">Edit Profile</h4>
-              <p class="category">Complete your profile</p>
-                          </div>
-                          <div class="card-content">
-                              <form  action="modules/editprofileuser.php" method="POST">
-                                  <input type="hidden" name="id" value="<?php echo $result['id_user'];?>">
-                                  <div class="row">
-
-                                      <div class="col-md-6">
-                                        <div class="form-group label-floating">
-                                          <label class="control-label">Email address</label>
-                                          <input type="email" name="email" class="form-control" value="<?php echo $result['email']; ?> ">
-                                        </div>
-                                      </div>
-                                  </div>
-
-                                  <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group label-floating">
-                                          <label class="control-label">Nama Anda</label>
-                                          <input type="text" name= "name" class="form-control" value="<?php echo $result['name']; ?>">
-                                        </div>
-                                      </div>
-                                  </div>
-
-                                  <div class="row">
-                                      <div class="col-md-12">
-                                        <div class="form-group label-floating">
-                                          <label class="control-label">Alamat</label>
-                                          <input type="text" name="address" class="form-control" value="<?php echo $result['address']; ?>">
-                                        </div>
-                                      </div>
-                                  </div>
-
-                                  <div class="row">
-                                      <div class="col-md-6">
-                                        <div class="form-group label-floating">
-                                          <label class="control-label">No Telepon</label>
-                                          <input type="number" onkeypress="return event.charCode >=48" name="phone" min= 0 class="form-control" value="<?php echo $result['phone']; ?>" >
-                                        </div>
-                                      </div>
-                                  </div>
-
-                                  <button type="submit" class="btn btn-primary pull-right">Update Profile</button>
-                                  <div class="clearfix"></div>
-                              </form>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-md-4">
-                      <div class="card card-profile">
-                        <div class="card-avatar">
-                          <a href="#admin">
-                            <img class="img" src="images/<?php echo $result['userpic']; ?>" />
-                          </a>
-                        </div>
-
-              <div class="content">
-                <h6 class="category text-gray">Pembeli</h6>
-                <h4 class="card-title"><?php echo $result['name']; ?></h4>
-                <a href="changepic.php" class="btn btn-primary btn-round">Ganti Foto</a><br>
-                <a href="../../logout.php?logout" class="btn btn-primary btn-round">Logout</a>
-              </div>
-            </div>
-          </div>
-              </div>
-          </div>
-      </div>
+	        <div class="content">
+	            <div class="container-fluid">
+	                <div class="row">
+	                    <div class="col-md-12">
+	                        <div class="card">
+                            <div class="card-header col-md-12" data-background-color="purple">
+                                <div class="col-md-4">
+                                  <h4 class="title">Order Yang Masuk</h4>
+	                                <p class="category">Silahkan Verifikasi Order</p>
+                                </div>
+                                <div class="col-md-4">
+                                </div>
+                            </div>
+	                            <div class="card-content table-responsive">
+	                            </div>
+	                        </div>
+	                    </div>
 
 	        <footer class="footer">
 	            <div class="container-fluid">

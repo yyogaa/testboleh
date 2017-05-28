@@ -72,6 +72,12 @@ $result = mysqli_fetch_array($query);
 	                        <p>Barang</p>
 	                    </a>
 	                </li>
+                  <li>
+                      <a href="orders.php">
+                          <i class="material-icons">library_books</i>
+                          <p>Order Saya</p>
+                      </a>
+                  </li>
 	            </ul>
 	    	</div>
 	    </div>
@@ -178,7 +184,7 @@ $result = mysqli_fetch_array($query);
 	                                        <div class="col-md-6">
                     												<div class="form-group label-floating">
                     													<label class="control-label">No Telepon</label>
-                    													<input type="number" name="phone" min= 0 class="form-control" value="<?php echo $result['phone']; ?>" >
+                    													<input type="number" onkeypress="return event.charCode >=48" name="phone" min= 0 class="form-control" value="<?php echo $result['phone']; ?>" >
                     												</div>
 	                                        </div>
 	                                    </div>

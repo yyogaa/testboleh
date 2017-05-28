@@ -20,7 +20,7 @@
   <?php
   }else{
     ?>
-    <script language="javascript">alert("Input Failed");</script>
+     <script language="javascript">alert("Input Failed");</script>
      <script>document.location.href='../table.php';</script>
   <?php
     }

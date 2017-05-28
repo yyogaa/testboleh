@@ -1,5 +1,6 @@
 <?php
 include('config.php');
+session_start();
 ?>
 
 
@@ -175,8 +176,12 @@ include('config.php');
                                       </tr>
                                       <tr>
                                         <td width="100">Harga Barang</td>
-                                        <td><input type="text" name="item_price" /></td>
+                                        <td><input type="number" min = 1 onkeypress="return event.charCode >=48"  name="item_price" /></td>
                                       </tr>
+																			<tr>
+																				<td width="100">Kuantitas</td>
+																				<td><input type="number" min="0" onkeypress="return event.charCode >=48" name="quantity" value=""></td>
+																			</tr>
 																			<tr>
  																			 <td width="100">Kategori</td>
  																			 <td><select class="" name="category">

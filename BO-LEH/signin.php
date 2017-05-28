@@ -49,7 +49,11 @@
     $_SESSION['user'] = $row['id_user'];
     $_SESSION['name'] = $row['name'];
     $_SESSION['type'] = $row['code'];
+    if ($_SESSION['type']==2) {
+      header("Location: dashboard/src/superdashboard.php");
+    }else{
     header("Location: home.php");
+    }
    } else {
     $errMSG = "Incorrect Credentials, Try again..";
    }
