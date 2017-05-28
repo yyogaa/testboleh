@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Login | BO-LEH</title>
+    <title>Makanan | BO-LEH</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/prettyPhoto.css" rel="stylesheet">
@@ -48,11 +48,9 @@
 					<div class="col-sm-6">
 						<div class="social-icons pull-right">
 							<ul class="nav navbar-nav">
-								<li><a href=""><i class="fa fa-facebook"></i></a></li>
-								<li><a href=""><i class="fa fa-twitter"></i></a></li>
-								<li><a href=""><i class="fa fa-linkedin"></i></a></li>
-								<li><a href=""><i class="fa fa-dribbble"></i></a></li>
-								<li><a href=""><i class="fa fa-google-plus"></i></a></li>
+								<li><a href="facebook.com"><i class="fa fa-facebook"></i></a></li>
+								<li><a href="twitter.com"><i class="fa fa-twitter"></i></a></li>
+								<li><a href="instagram.com"><i class="fa fa-instagram"></i></a></li>
 							</ul>
 						</div>
 					</div>
@@ -155,34 +153,22 @@
 						<div class="panel-group category-products" id="accordian"><!--category-productsr-->
 							<div class="panel panel-default">
 								<div class="panel-heading">
-									<h4 class="panel-title"><a href="shop_edit.html">Makanan Ringan</a></h4>
+									<h4 class="panel-title"><a href="#">Toko A</a></h4>
 								</div>
 							</div>
 							<div class="panel panel-default">
 								<div class="panel-heading">
-									<h4 class="panel-title"><a href="shop_edit.html">Makanan Manis</a></h4>
+									<h4 class="panel-title"><a href="#">Toko B</a></h4>
 								</div>
 							</div>
 						</div>
-						<h2>Harga</h2>
-						<div class="panel-group category-products" id="accordian"><!--category-productsr-->
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title"><a href="shop_edit.html">Rp.30.000</a></h4>
-								</div>
-							</div>
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title"><a href="shop_edit.html">>Rp.30.000</a></h4>
-								</div>
-							</div>
-						</div>
+						
 						<h2>Produk Terbaik Lain</h2>
 						<div class="product-go">
 								<img class="img-responsive fashion" src="coba/20.jpg" alt="">
 							<div class="grid-product">
 								<div class="text-center">
-								<a href="product-details_edit.html" class="elit">Roti Unyil</a>
+								<a href="prod-detail.php" class="elit">Roti Unyil</a>
 								<span class=" price-in">RP.20.000 </span>
 								</div>
 							</div>
@@ -192,7 +178,7 @@
 								<img class="img-responsive fashion" src="coba/12.jpg" alt="">
 							<div class="grid-product">
 								<div class="text-center">
-								<a href="product-details_edit.html" class="elit">Makroni Panggang</a>
+								<a href="prod-detail.php" class="elit">Makroni Panggang</a>
 								<span class=" price-in">RP.15.000</span>
 								</div>
 							</div>
@@ -289,9 +275,9 @@
 						<div class="single-widget">
 							<h2>Policies</h2>
 							<ul class="nav nav-pills nav-stacked">
-								<li><a href="404_edit.html">Terms of Use</a></li>
-								<li><a href="404_edit.html">Privecy Policy</a></li>
-								<li><a href="404_edit.html">Refund Policy</a></li>
+								<li><a href="#">Terms of Use</a></li>
+								<li><a href="#">Privecy Policy</a></li>
+								<li><a href="#">Refund Policy</a></li>
 							</ul>
 						</div>
 					</div>
