@@ -1,10 +1,11 @@
 <?php
 include "dbconnect.php";
 session_start();
-$iditem = $_GET['id'];
+$iditem = $_POST['iditem'];
 $sql = "SELECT * FROM items WHERE id_item = '$iditem' ";
 $qry= mysql_query($sql);
 $items = mysql_fetch_array($qry);
+$total = $items['price']*$_POST['quantity'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -173,24 +174,19 @@ $items = mysql_fetch_array($qry);
 							</td>
 							<td class="cart_description">
 								<h4><a href=""><?php echo $items['item_name']; ?></a></h4>
-
 							</td>
 							<td class="cart_price">
 								<p>RP.<?php echo $items['price']; ?></p>
 							</td>
-							<td class="cart_quantity">
-								<div class="cart_quantity_button">
-									<a class="cart_quantity_up" href=""> + </a>
-									<input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-									<a class="cart_quantity_down" href=""> - </a>
-								</div>
+							<td>
+								<p><?php echo $_POST['quantity']; ?></p>
 							</td>
 							<td class="cart_total">
-								<p class="cart_total_price">$59</p>
+								<p class="cart_total_price"><?php echo $total; ?></p>
 							</td>
 							<td>
-								<a href="prod_detail.php?" class="btn btn-default cart">Cancel</a> 
-								<a href="order-info.html" class="btn btn-default cart">Next</a> 
+								<a href="prod_detail.php?" class="btn btn-default cart">Cancel</a>
+								<a href="order-info.html" class="btn btn-default cart">Next</a>
 							</td>
 						</tr>
 
@@ -258,7 +254,7 @@ $items = mysql_fetch_array($qry);
 							</ul>
 						</div>
 					</div>
-					
+
 				</div>
 			</div>
 		</div>
@@ -266,7 +262,7 @@ $items = mysql_fetch_array($qry);
 				</div>
 			</div>
 		</div>
-		
+
 		<div class="footer-bottom">
 			<div class="container">
 				<div class="row">
@@ -275,7 +271,7 @@ $items = mysql_fetch_array($qry);
 				</div>
 			</div>
 		</div>
-		
+
 	</footer><!--/Footer-->
 
 

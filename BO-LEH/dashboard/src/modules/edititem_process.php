@@ -6,6 +6,7 @@
 	$name = $_POST['item_name'];
 	$price = $_POST['item_price'];
 	$category = $_POST['category'];
+  $quantity = $_POST['quantity'];
   $description = $_POST['description'];
   $pict = $_FILES['pict']['name'];
   $temp = $_FILES['pict']['tmp_name'];
@@ -13,6 +14,8 @@
   $path = "../images/".$newpict;
   if(move_uploaded_file($temp, $path)){
     $sql_ganti = "UPDATE items SET item_name = '$name', price ='$price' , type ='$category' , pic = '$newpict' ,description ='$description' WHERE id_item = '$id' ";
+    $sql_ganti2 = "UPDATE has_item SET quantity = '$quantity' WHERE id_item = '$id' ";
+    mysqli_query($conn,$sql_ganti2);
     if(mysqli_query($conn, $sql_ganti)){
     ?>
    <script language="javascript">alert("Input Successful");</script>

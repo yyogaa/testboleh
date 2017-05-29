@@ -12,12 +12,12 @@
     if(mysqli_query($conn, $sql_ganti)){
     ?>
    <script language="javascript">alert("Input Successful");</script>
-   <script>document.location.href='../seller.php';</script>
+   <script>document.location.href='../dashboard.php';</script>
   <?php
   }else{
     ?>
     <script language="javascript">alert("Input Failed");</script>
-     <script>document.location.href='../seller.php';</script>
+     <script>document.location.href='../dashboard.php';</script>
   <?php
     }
   }

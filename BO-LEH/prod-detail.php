@@ -2,7 +2,13 @@
 include "dbconnect.php";
 session_start();
 $iditem = $_GET['id'];
-$sql = "SELECT * FROM items WHERE id_item = '$iditem' ";
+$sql = "SELECT * FROM items WHERE id_item = $iditem ";
+$sql2 = "SELECT * FROM items JOIN has_item ON items.id_item = has_item.id_item WHERE has_item.id_item = $iditem";
+$sql3 = "SELECT name FROM has_item JOIN users ON has_item.id_user = users.id_user WHERE has_item.id_item = $iditem";
+$qry3 = mysql_query($sql3);
+$items3 = mysql_fetch_array($qry3);
+$qry2 = mysql_query($sql2);
+$items2 = mysql_fetch_array($qry2);
 $qry= mysql_query($sql);
 $items = mysql_fetch_array($qry);
 ?>
@@ -77,20 +83,17 @@ $items = mysql_fetch_array($qry);
                       if ( isset($_SESSION['user'])!="" ) {
                         if ( $_SESSION['type']=="1" ){
                 ?>
-                <li><a href="dashboard/src/seller.php"><i class="fa fa-user"></i> <?php echo $_SESSION['type'];  ?></a></li>
                 <li><a href="dashboard/src/seller.php"><i class="fa fa-user"></i> <?php echo $_SESSION['name'];  ?></a></li>
                 <li><a href="logout.php?logout"> Logout </a></li>
 
                 <?php
               }else if($_SESSION['type']=="0"){
                 ?>
-                <li><a href="dashboard/src/user.php"><i class="fa fa-user"></i> <?php echo $_SESSION['type'];  ?></a></li>
                 <li><a href="dashboard/src/user.php"><i class="fa fa-user"></i> <?php echo $_SESSION['name'];  ?></a></li>
                 <li><a href="logout.php?logout"> Logout </a></li>
                 <?php
               }else{
                  ?>
-                 <li><a href="dashboard/src/superadmin.php"><i class="fa fa-user"></i> <?php echo $_SESSION['type'];  ?></a></li>
                  <li><a href="dashboard/src/superadmin.php"><i class="fa fa-user"></i> <?php echo $_SESSION['name'];  ?></a></li>
                  <li><a href="logout.php?logout"> Logout </a></li>
                  <?php
@@ -124,12 +127,13 @@ $items = mysql_fetch_array($qry);
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
 								<li><a href="home.php">Home</a></li>
-								<li class="dropdown"><a href="#">Kategori<i class="fa fa-angle-down"></i></a>
-                                    <ul role="menu" class="sub-menu">
-                                        <li><a href="makanan.php">Makanan</a></li>
-										<li><a href="cinderamata.php">Cinderamata</a></li>
-                                    </ul>
-                                </li>
+								<li class="dropdown">
+                  <a href="#">Kategori<i class="fa fa-angle-down"></i></a>
+                    <ul role="menu" class="sub-menu">
+                        <li><a href="makanan.php">Makanan</a></li>
+		                    <li><a href="cinderamata.php">Cinderamata</a></li>
+                    </ul>
+                </li>
 							</ul>
 						</div>
 					</div>
@@ -164,7 +168,7 @@ $items = mysql_fetch_array($qry);
 								</div>
 							</div>
 						</div>
-						
+
 						<h2>Produk Terbaik Lain</h2>
 						<div class="product-go">
 								<img class="img-responsive fashion" src="images/images/20.jpg" alt="">
@@ -210,26 +214,36 @@ $items = mysql_fetch_array($qry);
                 <span>
 									<span>RP.<?php echo $items['price']; ?></span>
 
-                  <?php
-                    if ( isset($_SESSION['user'])!="" ) {
-                  ?>
-                  <a href="order.php?id=<?php echo $items['id_item'];?>" class="btn btn-default cart"><i class="fa fa-shopping-cart"></i>Order</a>
-                  <?php
-                    }else{
-                  ?>
-                  <td><a href="signin.php" class="btn btn-default cart"><i class="fa fa-shopping-cart"></i>Order</a>
-                  <?php
-                  }
-                  ?>
-
                 <!--  '<tr>
                   <td><a href="order.php?id='.$items['id_item'].'" class="btn btn-default cart"><i class="fa fa-shopping-cart"></i>Order</a>
                   </tr>' -->
 
 								</span>
-								<p><b>Availability:</b> In Stock</p>
-								<p><b>Condition:</b> New</p>
-								<p><b>Brand:</b> Makanan Manis</p>
+								<p><b>Availability:</b>
+                  <?php if ($items2['quantity']!=0) {
+                    echo $items2['quantity'] ;
+								}else{
+                    echo 'Stok Habis';
+                } ?>
+
+                </p>
+								<p><b>Toko:</b> <?php echo $items3['name']; ?> </p> <br>
+
+                <form class="" action="order.php" method="post">
+                <input type="hidden" name="iditem" value="<?php echo $iditem?>">
+                Quantity : <input type="number" name="quantity" onkeypress="return event.charCode >=48" value="1">
+                <?php
+                  if ( isset($_SESSION['user'])!="" ) {
+                ?>
+                <button type="submit" class="btn btn-default cart"><i class="fa fa-shopping-cart"></i>Order</button>
+                <?php
+                  }else{
+                ?>
+                <td><a href="signin.php" class="btn btn-default cart"><i class="fa fa-shopping-cart"></i>Order</a>
+                <?php
+                }
+                ?>
+                </form>
 
 							</div><!--/product-information-->
 						</div>

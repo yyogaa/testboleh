@@ -127,7 +127,7 @@
 														 <table class="table">
 																 <thead class="text-primary">
 																	 <th>No</th>
-																	 <th>Penjual</th>
+																	 <th>User Name</th>
 																	 <th>Alamat</th>
 																	 <th>Phone</th>
 																	 <th>Email</th>

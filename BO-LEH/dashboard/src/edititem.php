@@ -2,7 +2,9 @@
 include "config.php";
 $id = $_GET['id'];
 $query = mysqli_query($conn, "SELECT * FROM items WHERE id_item = '$id' ");
+$query2 = mysqli_query($conn, "SELECT * FROM items JOIN has_item ON items.id_item = has_item.id_item WHERE has_item.id_item = $id ");
 $result = mysqli_fetch_array($query);
+$result2 = mysqli_fetch_array($query2);
  ?>
 
 <!doctype html>
@@ -150,7 +152,7 @@ $result = mysqli_fetch_array($query);
                                     <tbody>
                                       <!-- editproses untuk edit -->
                                       <input type="hidden" name="id" value="<?php echo $result['id_item'];?>">
-                                          
+
                                          <div class="col-sm-3">
                                            <div class="form-group">
                                                <tr>
@@ -164,7 +166,7 @@ $result = mysqli_fetch_array($query);
                                            <div class="form-group">
                                                <tr>
                                                  <td>Harga : </td>
-                                                 <td><input type="number" min = 0 name="item_price" placeholder = "Masukkan Harga Barang Anda" class="form-control" value="<?php echo $result['price'];?>" required></td>
+                                                 <td><input type="number" min = 0 onkeypress="return event.charCode >=48" name="item_price" placeholder = "Masukkan Harga Barang" class="form-control" value="<?php echo $result['price'];?>" required></td>
                                                </tr>
                                            </div>
                                          </div>
@@ -183,10 +185,20 @@ $result = mysqli_fetch_array($query);
                                            </div>
 
                                            <div class="col-sm-3">
+                                             <div class="dropdown">
+                                                   <tr>
+                                                     <td>Jumlah Barang</td>
+                                                     <td><input type="number" min= 0  onkeypress="return event.charCode >=48" name="quantity" placeholder = "Masukkan Jumlah Barang" class="form-control" value="<?php echo $result2['quantity'];?>" required></td>
+                                                     </td>
+                                                   </tr>
+                                             </div>
+                                           </div>
+
+                                           <div class="col-sm-3">
                                              <div class="form-group">
                                                  <tr>
                                                    <td>Deskripsi : </td>
-                                                   <td><textarea class="form-control" cols="60" rows="3" name="description" placeholder="Silahkan Masukan Deskripsi Barang Anda" rows="5"><?php echo $result['description'];?></textarea>
+                                                   <td><textarea class="form-control" cols="60" rows="3" name="description" placeholder="Silahkan Masukan Deskripsi Barang Anda" rows="5"><?php echo $result2['description'];?></textarea>
                                                  </tr>
                                              </div>
                                            </div>
