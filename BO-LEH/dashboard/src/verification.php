@@ -1,11 +1,11 @@
 <?php
 include "config.php";
 session_start();
-$id = $_SESSION['user'];
-$type = $_SESSION['type'];
-
-
+$id = $_POST['iditem'];
+$query = mysqli_query($conn, "SELECT * FROM  orders JOIN items WHERE orders.id_item = items.id_item AND orders.id_user AND orders.id_item = $id");
+$result = mysqli_fetch_array($query);
  ?>
+
 
 <!doctype html>
 <html lang="en">
@@ -40,17 +40,16 @@ $type = $_SESSION['type'];
 	<div class="wrapper">
 	    <div class="sidebar" data-color="purple" data-image="../assets/img/sidebar-1.jpg">
 			<!--
-	        Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
-		    Tip 2: you can also add an image using data-image tag
+		        Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
 
-			-->
+		        Tip 2: you can also add an image using data-image tag
+		    -->
 
 			<div class="logo">
 				<a href="..\..\home.php" class="simple-text">
 					BOLEH
 				</a>
 			</div>
-
 
 	    	<div class="sidebar-wrapper">
 				<ul class="nav">
@@ -60,21 +59,21 @@ $type = $_SESSION['type'];
 	                        <p>Dashboard</p>
 	                    </a>
 	                </li>
-	                <li>
-	                    <a href="user.php">
+	                <li class="active">
+	                    <a href="seller.php">
 	                        <i class="material-icons">person</i>
 	                        <p>User Profile</p>
 	                    </a>
 	                </li>
-                  <li class="active">
-	                    <a href="transaction.php">
-	                        <i class="material-icons">library_books</i>
-	                        <p>Transaksi Saya</p>
+	                <li>
+	                    <a href="table.php">
+	                        <i class="material-icons">content_paste</i>
+	                        <p>Barang</p>
 	                    </a>
 	                </li>
 	            </ul>
 	    	</div>
-		</div>
+	    </div>
 
 	    <div class="main-panel">
 			<nav class="navbar navbar-transparent navbar-absolute">
@@ -86,7 +85,7 @@ $type = $_SESSION['type'];
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href="#">Transaksi</a>
+						<a class="navbar-brand" href="#">Profile</a>
 					</div>
 					<div class="collapse navbar-collapse">
 						<ul class="nav navbar-nav navbar-right">
@@ -136,72 +135,31 @@ $type = $_SESSION['type'];
 
 	        <div class="content">
 	            <div class="container-fluid">
-	                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card">
-                          <div class="card-header col-md-12" data-background-color="purple">
-                              <div class="col-md-4">
-                                <h4 class="title">Transaksi Saya</h4>
-                                <p class="category">Konfirmasi Pembayaran Anda</p>
-                              </div>
-                              <div class="col-md-4">
-                              </div>
-                          </div>
-                            <div class="card-content table-responsive">
-                                <table class="table">
-                                    <thead class="text-primary">
-                                      <th>No</th>
-                                      <th>Foto</th>
-                                      <th>Nama Barang</th>
-                                      <th>Harga</th>
-                                      <th>Kuantitas</th>
-                                      <th>Harga Total</th>
-                                      <th>Tanggal Order</th>
-                                      <th>Action</th>
-                                    </thead>
-                                    <tbody>
+                <form action="modules/verification_process.php" method="post" enctype="multipart/form-data">
+                  <input type="hidden" name="idorder" value="<?php echo $result['id_order'];?>">
+                  <div class="col-md-2">
+                  </div>
+  	                <div class="row">
+  											<div class="col-md-8">
+  					    						<div class="card card-profile">
 
-                                      <!-- SHOWING TABLE -->
-                                        <?php
-                                        $query = mysqli_query($conn, "SELECT * FROM  orders JOIN items WHERE orders.id_item = items.id_item AND orders.id_user = $id");
-                                        $count = 1;
+              							<div class="content">
+              								<h6 class="category text-gray">Verifikasi Bukti Pembayaran untuk</h6>
+              								<h3 class="card-title"><?php echo $result['item_name']; ?></h3>
+                              <h4 class="card-title btn btn-primary"><input type="file" name="pict" class="btn btn-primary"></td></h4><br>
+                              <button type="submit" class="btn btn-primary" name="submit">Submit</button>
 
-                                        while($result = mysqli_fetch_array($query)){ //selama masih bisa fetch data
 
-                                          echo
-                                          '<tr>
-                                            <td>'.$count++.'</td>
-                                            <td><img src="images/'.$result['pic'].'" width="40" height="50" alt="" style="width:50px; margin-right:20px; margin-bottom:50px;"></td>
-                                            <td>'.$result['item_name'].'</td>
-                                            <td>'.$result['price'].'</td>
-                                            <td>'.$result['order_total'].'</td>
-                                            <td>'.$result['price_total'].'</td>
-                                            <td>'.$result['order_date'].'</td>
-                                            <td> </td>';
-                                            if($result['paid']==0){
-                                              ?>
-                                            <form action="verification.php" method="post"><input type="hidden" name="iditem" value="<?php echo $result['id_item']; ?>">
-                                            <td><button type="submit" class="btn btn-warning">Konfirmasi</button></td></form>
-                                          </tr>
-                                            <?php
-                                          }else if ($result['paid']==1){
-                                            echo '<td><a href=""><button type="button" class="btn btn-default">Tunggu Konfirmasi</button></a></td>
-
-                                            </tr>';
-                                          }else{
-                                            echo '<td><a href=""><button type="button" class="btn btn-success">Terbayar</button></a></td>
-
-                                            </tr>';
-                                          }
-
-                                        }
-
-                                         ?>
-                                    </tbody>
-                                </table>
                             </div>
-                        </div>
-                    </div>
+              						</div>
+          		    			</div>
+  	                </div>
+                      <div class="col-md-2">
+                      </div>
+                </form>
+
+	            </div>
+	        </div>
 
 	        <footer class="footer">
 	            <div class="container-fluid">

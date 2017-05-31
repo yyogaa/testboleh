@@ -1,11 +1,14 @@
 <?php
 include "dbconnect.php";
 session_start();
+$id = $_SESSION['user'];
 $iditem = $_POST['iditem'];
 $sql = "SELECT * FROM items WHERE id_item = '$iditem' ";
-$qry= mysql_query($sql);
+$sql2 = "SELECT item_name, name, address, phone, email FROM users JOIN has_item JOIN items WHERE has_item.id_item = items.id_item AND users.id_user = '$id' AND items.id_item = '$iditem' ";
+$qry = mysql_query($sql);
+$qry2=mysql_query($sql2);
 $items = mysql_fetch_array($qry);
-$total = $items['price']*$_POST['quantity'];
+$items2 = mysql_fetch_array($qry2);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -126,11 +129,11 @@ $total = $items['price']*$_POST['quantity'];
 							<ul class="nav navbar-nav collapse navbar-collapse">
 								<li><a href="home.php">Home</a></li>
 								<li class="dropdown"><a href="#">Kategori<i class="fa fa-angle-down"></i></a>
-                  <ul role="menu" class="sub-menu">
-                      <li><a href="makanan.php">Makanan</a></li>
-	                    <li><a href="cinderamata.php">Cinderamata</a></li>
-                  </ul>
-              </li>
+                                    <ul role="menu" class="sub-menu">
+                                        <li><a href="makanan.php">Makanan</a></li>
+										<li><a href="cinderamata.php">Cinderamata</a></li>
+                                    </ul>
+                                </li>
 							</ul>
 						</div>
 					</div>
@@ -149,63 +152,39 @@ $total = $items['price']*$_POST['quantity'];
 
 	<section id="cart_items">
 		<div class="container">
-			<div class="breadcrumbs">
-				<ol class="breadcrumb">
-				  <li><a href="home.php">Home</a></li>
-				  <li class="active">Order</li>
-				</ol>
-			</div>
-      <h3 class="text-center">Total Harga Pembelian</h3>
-			<div class="table-responsive cart_info">
-				<table class="table table-condensed">
-					<thead>
-						<tr class="cart_menu">
-							<td class="image">Item</td>
-							<td class="description"></td>
-							<td class="price">Price</td>
-							<td class="quantity">Quantity</td>
-							<td class="total">Total</td>
-							<td></td>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td class="cart_product">
-								<a href=""><img src="dashboard/src/images/<?php echo $items['pic']; ?>" width="150" height="150"/></a>
-							</td>
-							<td class="cart_description">
-								<h4><a href=""><?php echo $items['item_name']; ?></a></h4>
-							</td>
-							<td class="cart_price">
-								<p>RP <?php echo $items['price']; ?></p>
-							</td>
-							<td>
-								<p><?php echo $_POST['quantity']; ?></p>
-							</td>
-							<td class="cart_total">
-								<p class="cart_total_price">RP <?php echo $total; ?></p>
-							</td>
-							<td>
-								<a href="prod-detail.php?id=<?php echo $iditem; ?>" class="btn btn-default cart">Edit</a>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-      <div class="col-md-12 col-md-push-10">
-        <a href="prod-detail.php?id=<?php echo $iditem; ?>" class="btn btn-default cart">Cancel</a>
-        <form class="" action="order-info.php" method="post">
-          <input type="hidden" name="iditem" value="<?php echo $iditem; ?>">
-          <input type="hidden" name="quantity" value="<?php echo $_POST['quantity']; ?>">
-          <input type="hidden" name="total" value="<?php echo $total; ?>">
-          <button type="submit" class="btn btn-default cart">Next</button>
-        </form>
-      </div>
+        <div class="row">
+          <div class="col-sm-6">
+
+              <div class="shopper-info">
+                <p>Detail Produk</p>
+                <form class="" action="order-info-process.php" method="post">
+                  <input type="text" name="item_name" placeholder="Nama Produk" value="<?php echo $items2['item_name']; ?> " readonly="readonly">
+                  <label>Total Harga </label>
+                  <input type="text" name="total" placeholder="Harga Total" value="<?php echo $_POST['total']; ?> " readonly="readonly">
+                  <label>Jumlah:</label>
+                  <input type="text"  name="quantity" placeholder="Jumlah" value="<?php echo $_POST['quantity']; ?> " readonly="readonly">
+                </form>
+              </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-6 clearfix">
+              <div class="shopper-info">
+                <p>Data Penerima</p>
+                  <form>
+                    <input type="text" placeholder="Nama" name="user_name" value="<?php echo $items2['name']; ?>">
+                    <input type="number" min=0 onkeypress="return event.charCode >=48" maxlength="12" placeholder="No HP" name="phone" value="<?php echo $items2['phone']; ?>">
+                    <input type="text" placeholder="Alamat" name="address" value="<?php echo $items2['address']; ?>">
+                    <input type="email" placeholder="email" name="email" value="<?php echo $items2['email']; ?>">
+                  </form>
+              </div>
+            </div>
+          </div>
 		</div>
 	</section> <!--/#cart_items-->
-
-
-
+    <div class="col-md-12 col-md-push-10">
+  <button type="submit" name="button" class="btn btn-default cart">Submit</button>
+    </div>
 
 
 	<section id="do_action">

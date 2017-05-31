@@ -231,7 +231,7 @@ $items = mysql_fetch_array($qry);
 
                 <form class="" action="order.php" method="post">
                 <input type="hidden" name="iditem" value="<?php echo $iditem?>">
-                Quantity : <input type="number" name="quantity" onkeypress="return event.charCode >=48" value="1">
+                Quantity : <input type="number" min=1 max= <?php echo $items2['quantity'] ; ?> name="quantity" onkeypress="return event.charCode >=48" value="1">
                 <?php
                   if ( isset($_SESSION['user'])!="" ) {
                 ?>

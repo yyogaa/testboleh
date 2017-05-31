@@ -227,7 +227,7 @@ $type = $_SESSION['type'];
 	        </footer>
 	    </div>
 	</div>
-
+</div>
 </body>
 
 	<!--   Core JS Files   -->
