@@ -187,18 +187,25 @@ $type = $_SESSION['type'];
                                           </tr>
                                             <?php
                                           }else if ($result['paid']==1){
-                                            echo '<td><a href=""><button type="button" class="btn btn-default">Tunggu Konfirmasi</button></a></td>
+                                            echo '<td><a href=""><button type="button" class="btn btn-default">Tunggu Konfirmasi</button></a>
 
                                             </tr>';
                                           }else{
-                                            echo '<td><a href=""><button type="button" class="btn btn-success">Terbayar</button></a></td>
+                                            ?>
+                                            <td><a href=""><button type="button" class="btn btn-success">Terbayar</button></a></td>
+                                            <td>
+                                              <form action="modules/rate-proses.php" method="post">
+                                              <input type="hidden" name="iditem" value="<?php echo $result['id_item']; ?>"> </br>
+                                              <input type="number" min=1 max=5 name="rating" onkeypress="return event.charCode >=48" value="5">
+                                              <button type="submit" class="btn btn-warning">Rate it !</button>
+                                              </form>
+                                            </td>
 
-                                            </tr>';
+
+                                        <?php
                                           }
-
                                         }
-
-                                         ?>
+                                        ?>
                                     </tbody>
                                 </table>
                             </div>
