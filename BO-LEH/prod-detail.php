@@ -209,7 +209,26 @@ $items = mysql_fetch_array($qry);
 							<div class="product-information"><!--/product-information-->
 								<h2 class="title text-center"><?php echo $items['item_name']; ?></h2>
 								<p><?php echo $items['description']; ?></p>
-								<img src="images/product-details/rating.png" alt="" />
+
+                <?php
+
+                $total = 0;
+                $count = 0;
+                $sqlrat = "SELECT * FROM rating WHERE id_item = $iditem ";
+                $qryrat = mysql_query($sqlrat);
+                while($rat = mysql_fetch_array($qryrat)){
+                    $total=$total+$rat['vote'];
+                    $count=$count+1;
+                }
+                if($total!=0){
+                  $ratinguhuy = $total / $count;
+                }else{
+                  $ratinguhuy = 0;
+                }
+
+                ?>
+
+                Rating : <?php echo $ratinguhuy ?> / 5
 								<br/>
                 <span>
 									<span>RP.<?php echo $items['price']; ?></span>
