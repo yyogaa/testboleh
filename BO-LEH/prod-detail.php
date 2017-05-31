@@ -156,40 +156,11 @@ $items = mysql_fetch_array($qry);
 					<div class="left-sidebar">
 						<div class="pull-left">
 						<h2>Brands</h2>
-						<div class="panel-group category-products" id="accordian"><!--category-productsr-->
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title"><a href="#">Toko A</a></h4>
-								</div>
-							</div>
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title"><a href="#">Toko B</a></h4>
-								</div>
-							</div>
-						</div>
+
 
 						<h2>Produk Terbaik Lain</h2>
-						<div class="product-go">
-								<img class="img-responsive fashion" src="images/images/20.jpg" alt="">
-							<div class="grid-product">
-								<div class="text-center">
-								<a href="prod-detail.php" class="elit">Roti Unyil</a>
-								<span class=" price-in">RP.20.000 </span>
-								</div>
-							</div>
-							<div class="clearfix"> </div>
-							</div>
-							<div class="product-go">
-								<img class="img-responsive fashion" src="images/images/14.jpg" alt="">
-							<div class="grid-product">
-								<div class="text-center">
-								<a href="prod-detail.php" class="elit">Makroni Panggan</a>
-								<span class=" price-in">RP.15.000</span>
-								</div>
-							</div>
-							<div class="clearfix"> </div>
-							</div>
+
+
 							<div class="clearfix"> </div>
 						</div>
 					</div>
