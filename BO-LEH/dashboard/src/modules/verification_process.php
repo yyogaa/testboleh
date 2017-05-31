@@ -10,7 +10,7 @@
   if(move_uploaded_file($temp, $path)){
     $sql_ganti = "UPDATE orders SET pic = '$newpict' WHERE id_order= '$id' ";
     if(mysqli_query($conn, $sql_ganti)){
-      $sql_ganti2 = "UPDATE orders SET paid = 1 WHERE id_order = '$id'";
+      $sql_ganti2 = "UPDATE orders SET paid = 1 WHERE id_order = '$id' ";
       mysqli_query($conn, $sql_ganti2);
     ?>
    <script language="javascript">alert("Input Successful");</script>

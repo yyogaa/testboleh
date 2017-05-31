@@ -29,7 +29,7 @@
     }
   }
   else{
-    echo "Sorry, can't upload the picture at the moment";
+   echo "Sorry, can't upload the picture at the moment";
    echo "<br><a href='../additem.php'>Back to Form</a>";
   }
   mysqli_close($conn);

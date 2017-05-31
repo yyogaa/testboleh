@@ -200,11 +200,13 @@ $type = $_SESSION['type'];
                                             ?>
                                             <form action="modules/orders-process.php" method="post">
                                             <input type="hidden" name="iditem" value="<?php echo $result['id_item']; ?>">
+                                            <input type="hidden" name="iduser" value="<?php echo $idpembeli; ?>">
                                             <input type="hidden" name="condition" value="2">
                                             <td><button type="submit" class="btn btn-success">Accept</button></td></form>
 
                                             <form action="modules/orders-process.php" method="post">
                                               <input type="hidden" name="iditem" value="<?php echo $result['id_item']; ?>">
+                                              <input type="hidden" name="iduser" value="<?php echo $idpembeli; ?>">
                                               <input type="hidden" name="condition" value="0">
                                             <td><button type="submit" class="btn btn-danger">Deny</button></td></form>
                                             </tr>

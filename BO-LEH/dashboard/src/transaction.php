@@ -180,7 +180,9 @@ $type = $_SESSION['type'];
                                             <td> </td>';
                                             if($result['paid']==0){
                                               ?>
-                                            <form action="verification.php" method="post"><input type="hidden" name="iditem" value="<?php echo $result['id_item']; ?>">
+                                            <form action="verification.php" method="post">
+                                            <input type="hidden" name="iditem" value="<?php echo $result['id_item']; ?>">
+                                            <input type="hidden" name="idorder" value="<?php echo $result['id_order']; ?>">
                                             <td><button type="submit" class="btn btn-warning">Konfirmasi</button></td></form>
                                           </tr>
                                             <?php

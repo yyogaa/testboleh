@@ -4,8 +4,9 @@
 
   $id_item = $_POST['iditem'];
   $condition = $_POST['condition'];
+  $iduser = $_POST['iduser'];
 
-  $query = mysqli_query($conn, "UPDATE orders SET paid = '$condition' WHERE id_item = $id_item ");
+  $query = mysqli_query($conn, "UPDATE orders SET paid = '$condition' WHERE id_item = $id_item AND id_user = $iduser ");
 
   if ($query) {
     ?>

@@ -1,8 +1,8 @@
 <?php
 include "config.php";
 session_start();
-$id = $_POST['iditem'];
-$query = mysqli_query($conn, "SELECT * FROM  orders JOIN items WHERE orders.id_item = items.id_item AND orders.id_user AND orders.id_item = $id");
+$id = $_POST['idorder'];
+$query = mysqli_query($conn, "SELECT * FROM  orders JOIN items WHERE orders.id_item = items.id_item AND  orders.id_order = $id");
 $result = mysqli_fetch_array($query);
  ?>
 
