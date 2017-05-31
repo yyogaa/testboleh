@@ -6,7 +6,17 @@ $type = $_SESSION['type'];
 $query = mysqli_query($conn, "SELECT * FROM users WHERE id_user = $id" );
 $result = mysqli_fetch_array($query);
 
- ?>
+if (isset($_SESSION['user'])=="") {
+    header("Location: ../../signin.php");
+    exit;
+
+  ?>
+
+<?php }else{
+
+?>
+
+
 
 
 <!doctype html>
@@ -287,3 +297,5 @@ $result = mysqli_fetch_array($query);
 	<script src="../assets/js/demo.js"></script>
 
 </html>
+
+<?php }  ?>
