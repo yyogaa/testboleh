@@ -198,6 +198,10 @@ $type = $_SESSION['type'];
                                             <?php
                                           }else if ($result['paid']==1){
                                             ?>
+                                            <td><a href="cekfoto.php"><button type="button" name="button" class="btn btn-info">Cek</button></a></td>
+
+
+
                                             <form action="modules/orders-process.php" method="post">
                                             <input type="hidden" name="iditem" value="<?php echo $result['id_item']; ?>">
                                             <input type="hidden" name="iduser" value="<?php echo $idpembeli; ?>">

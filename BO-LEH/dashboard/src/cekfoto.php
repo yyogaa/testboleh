@@ -1,3 +1,12 @@
+<?php
+include "config.php";
+session_start();
+$id = $_SESSION['user'];
+$type = $_SESSION['type'];
+
+
+ ?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -24,19 +33,17 @@
     <!--     Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
-
 </head>
 
 <body>
 
 	<div class="wrapper">
 	    <div class="sidebar" data-color="purple" data-image="../assets/img/sidebar-1.jpg">
-
 			<!--
-		        Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
+	        Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
+		    Tip 2: you can also add an image using data-image tag
 
-		        Tip 2: you can also add an image using data-image tag
-		    -->
+			-->
 
 			<div class="logo">
 				<a href="..\..\home.php" class="simple-text">
@@ -44,25 +51,36 @@
 				</a>
 			</div>
 
-	    	<div class="sidebar-wrapper">
-				<ul class="nav">
-	                <li>
-	                    <a href="superdashboard.php">
-	                        <i class="material-icons">dashboard</i>
-	                        <p>Dashboard</p>
-	                    </a>
-	                </li>
-	                <li>
-	                </li>
-                    <li class="active">
-                        <a href="usersdata.php">
-	                        <i class="material-icons">unarchive</i>
-	                        <p>User</p>
-	                    </a>
-                    </li>
-	            </ul>
-	    	</div>
-	    </div>
+
+      <div class="sidebar-wrapper">
+      <ul class="nav">
+                <li>
+                    <a href="dashboard.php">
+                        <i class="material-icons">dashboard</i>
+                        <p>Dashboard</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="seller.php">
+                        <i class="material-icons">person</i>
+                        <p>User Profile</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="table.php">
+                        <i class="material-icons">content_paste</i>
+                        <p>Barang</p>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="orders.php">
+                        <i class="material-icons">library_books</i>
+                        <p>Order Saya</p>
+                    </a>
+                </li>
+            </ul>
+      </div>
+		</div>
 
 	    <div class="main-panel">
 			<nav class="navbar navbar-transparent navbar-absolute">
@@ -74,7 +92,7 @@
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href="#">Upgrade</a>
+						<a class="navbar-brand" href="#">Order Yang Masuk</a>
 					</div>
 					<div class="collapse navbar-collapse">
 						<ul class="nav navbar-nav navbar-right">
@@ -84,7 +102,21 @@
 									<p class="hidden-lg hidden-md">Dashboard</p>
 								</a>
 							</li>
-							<li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+									<i class="material-icons">notifications</i>
+									<span class="notification">5</span>
+									<p class="hidden-lg hidden-md">Notifications</p>
+								</a>
+								<ul class="dropdown-menu">
+									<li><a href="#">Mike John responded to your email</a></li>
+									<li><a href="#">You have 5 new tasks</a></li>
+									<li><a href="#">You're now friend with Andrew</a></li>
+									<li><a href="#">Another Notification</a></li>
+									<li><a href="#">Another One</a></li>
+								</ul>
+							</li>
+              <li>
 								<a href="#pablo" class="dropdown-toggle" data-toggle="dropdown">
 	 							   <i class="material-icons">person</i>
 	 							   <p class="hidden-lg hidden-md">Profile</p>
@@ -108,59 +140,45 @@
 				</div>
 			</nav>
 
-			<div class="content">
-				 <div class="container-fluid">
-						 <div class="row">
-								 <div class="col-md-12">
-										 <div class="card">
-												 <div class="card-header" data-background-color="purple">
-														 <h4 class="title">Users Data</h4>
-														 <p class="category">List Of Active User</p>
-												 </div>
-												 <div class="card-content table-responsive">
-														 <table class="table">
-																 <thead class="text-primary">
-																	 <th>No</th>
-																	 <th>User Name</th>
-																	 <th>Alamat</th>
-																	 <th>Phone</th>
-																	 <th>Email</th>
-																	 <th></th>
-																	 <th>Action</th>
+	        <div class="content">
+	            <div class="container-fluid">
+	                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                          <div class="card-header col-md-12" data-background-color="purple">
+                              <div class="col-md-4">
+                                <h4 class="title">Order yang Masuk</h4>
+                                <p class="category">Konfirmasi Pembayaran Order</p>
+                              </div>
+                              <div class="col-md-4">
+                              </div>
+                          </div>
+                            <div class="card-content table-responsive">
+                                <table class="table">
+                                    <thead class="text-primary">
+                                      <th>Foto</th>
+                                    </thead>
+                                    <tbody>
 
-																 </thead>
-																 <tbody>
-																	 <!-- SHOWING TABLE -->
-																		 <?php
-																		 include "config.php";
-																		 $query = mysqli_query($conn, "SELECT * FROM users WHERE code != 2");
-																		 $count = 1;
+                                      <!-- SHOWING TABLE -->
+                                        <?php
+                                        $query = mysqli_query($conn, "SELECT * FROM  orders JOIN items JOIN has_item WHERE orders.id_item = items.id_item AND orders.id_item = has_item.id_item AND has_item.id_user = $id ");
+                                        $queryuser = mysqli_query($conn, "SELECT orders.id_user, orders.pic FROM  orders JOIN items JOIN has_item WHERE orders.id_item = items.id_item AND orders.id_item = has_item.id_item AND has_item.id_user = $id ");
+                                        $count = 1;
 
-																		 while($result = mysqli_fetch_array($query)){ //selama masih bisa fetch data
-																			 echo
-																			 '<tr>
-																				 <td>'.$count++.'</td>
-																				 <td>'.$result['name'].'</td>
-																				 <td>'.$result['address'].'</td>
-																				 <td>'.$result['phone'].'</td>
-																				 <td>'.$result['email'].'</td>
-																				 <td> </td>
-																				 <td> </td>
-																				 <td><a href="edit.php?id='.$result['id_user'].'"><button type="button" class="btn btn-primary">Edit</button></a></td>
-																				 <td><a href="delete.php?id='.$result['id_user'].'"><button type="button" class="btn btn-danger">Delete</button></a></td>
-																			 </tr>';
-																		 }
-
-																			?>
-
-																		 <tr>
-																			 <td><a href="addusers.php"> <button type="button" class="btn btn primary">Tambah</button></a></td>
-																		 </tr>
-																 </tbody>
-														 </table>
-												 </div>
-										 </div>
-								 </div>
+                                          //selama masih bisa fetch data
+                                          $resultuser = mysqli_fetch_array($queryuser);
+                                          $foto = $resultuser['pic'];
+                                          $idpembeli = $resultuser['id_user'];
+                                          $queryketerangan = mysqli_query($conn,"SELECT * FROM users WHERE id_user = $idpembeli" );
+                                          $resultketerangan = mysqli_fetch_array($queryketerangan);
+                                          ?>
+                                          <td><img src="payment/<?php echo $foto; ?>" width="40" height="50" alt="" style="width:634px; margin-right:20px; margin-bottom:50px;"></td>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
 
 	        <footer class="footer">
 	            <div class="container-fluid">

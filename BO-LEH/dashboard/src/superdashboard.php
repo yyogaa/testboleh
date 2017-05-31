@@ -45,21 +45,15 @@
 	    	<div class="sidebar-wrapper">
 	            <ul class="nav">
 	                <li class="active">
-	                    <a href="dashboard.php">
+	                    <a href="superdashboard.php">
 	                        <i class="material-icons">dashboard</i>
 	                        <p>Dashboard</p>
-	                    </a>
-	                </li>
-	                <li>
-	                    <a href="superadmin.php">
-	                        <i class="material-icons">person</i>
-	                        <p>User Profile</p>
 	                    </a>
 	                </li>
 									<li>
 	                    <a href="usersdata.php">
 	                        <i class="material-icons">unarchive</i>
-	                        <p>Seller</p>
+	                        <p>User</p>
 	                    </a>
 	                </li>
 	            </ul>
