@@ -39,8 +39,8 @@
 					<div class="col-sm-6">
 						<div class="contactinfo">
 							<ul class="nav nav-pills">
-								<li><a href=""><i class="fa fa-phone"></i> +2 95 01 88 821</a></li>
-								<li><a href=""><i class="fa fa-envelope"></i> info@domain.com</a></li>
+								<li><a href=""><i class="fa fa-phone"></i> +62838xxxx</a></li>
+								<li><a href=""><i class="fa fa-envelope"></i> info@boleh.com</a></li>
 							</ul>
 						</div>
 					</div>
@@ -165,7 +165,7 @@
 									<button type="button" class="btn btn-default get">Get it now</button>
 								</div>
 								<div class="col-sm-6">
-									<img src="images/home/girl1.jpg" class="girl img-responsive" alt="" />
+									<img src="images/home/sangkuriang3.jpg" class="girl img-responsive" alt="" />
 									<img src="images/home/pricing.png"  class="pricing" alt="" />
 								</div>
 							</div>
@@ -177,7 +177,7 @@
 									<button type="button" class="btn btn-default get">Get it now</button>
 								</div>
 								<div class="col-sm-6">
-									<img src="images/home/girl2.jpg" class="girl img-responsive" alt="" />
+									<img src="images/home/wedang.jpeg" class="girl img-responsive" alt="" />
 									<img src="images/home/pricing.png"  class="pricing" alt="" />
 								</div>
 							</div>
@@ -190,7 +190,7 @@
 									<button type="button" class="btn btn-default get">Get it now</button>
 								</div>
 								<div class="col-sm-6">
-									<img src="images/home/girl3.jpg" class="girl img-responsive" alt="" />
+									<img src="images/home/pempek.jpg" class="girl img-responsive" alt="" />
 									<img src="images/home/pricing.png" class="pricing" alt="" />
 								</div>
 							</div>
@@ -231,7 +231,7 @@
   										<div class="productinfo text-center">
                         <img src="dashboard/src/images/<?php echo $items['pic']; ?>" width="200" height="250" alt="" style="width:250px; margin-right:20px; margin-bottom:50px;" />
 
-  											<h2>RP.<?php echo $items['price']; ?></h2>
+  											<h2>RP.<?php echo number_format($items['price']) ; ?></h2>
   											<p><?php echo $items['item_name']; ?></p>
                         <?php
                           echo
@@ -242,7 +242,7 @@
   										</div>
   										<div class="product-overlay">
   											<div class="overlay-content">
-  												<h2>RP.<?php echo $items['price']; ?></h2>
+  												<h2>RP.<?php echo number_format($items['price']); ?></h2>
   												<p><?php echo $items['item_name']; ?></p>
                           <?php
                             echo
@@ -266,7 +266,7 @@
                 }
               ?>
 
-  					</div><!--features_items-->					
+  					</div><!--features_items-->
 
 				</div>
 			</div>

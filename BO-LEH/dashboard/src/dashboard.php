@@ -5,7 +5,14 @@ $id = $_SESSION['user'];
 $type = $_SESSION['type'];
 $query = mysqli_query($conn, "SELECT * FROM users WHERE id_user = $id" );
 $result = mysqli_fetch_array($query);
-
+$queryuser = mysqli_query($conn, "SELECT * FROM orders JOIN has_item ON has_item.id_item = orders.id_item WHERE orders.id_user = $id ");
+$queryseller = mysqli_query($conn, "SELECT * FROM orders JOIN has_item ON has_item.id_item = orders.id_item WHERE has_item.id_user = $id ");
+$resultuser = mysqli_fetch_array($queryuser);
+$resultseller = mysqli_fetch_array($queryseller);
+$counttuser = mysqli_query($conn, "SELECT COUNT(id_order) FROM orders WHERE id_user = $id");
+$countseller = mysqli_query($conn, "SELECT COUNT(quantity) FROM has_item WHERE id_user = $id");
+// $resultcount1 = mysqli_fetch($countseller);
+// $resultcount2 = mysqli_fetch($counttuser);
   if (isset($_SESSION['user'])=="") {
       header("Location: ../../signin.php");
       exit;
@@ -255,7 +262,7 @@ $result = mysqli_fetch_array($query);
     								</div>
     								<div class="card-content">
     									<p class="category">Followers</p>
-    									<h3 class="title">+245</h3>
+    									<h3 class="title">765</h3>
     								</div>
     								<div class="card-footer">
     									<div class="stats">

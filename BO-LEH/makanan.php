@@ -75,20 +75,20 @@
                       if ( isset($_SESSION['user'])!="" ) {
                         if ( $_SESSION['type']=="1" ){
                 ?>
-                <li><a href="dashboard/src/seller.php"><i class="fa fa-user"></i> <?php echo $_SESSION['type'];  ?></a></li>
+
                 <li><a href="dashboard/src/seller.php"><i class="fa fa-user"></i> <?php echo $_SESSION['name'];  ?></a></li>
                 <li><a href="logout.php?logout"> Logout </a></li>
 
                 <?php
               }else if($_SESSION['type']=="0"){
                 ?>
-                <li><a href="dashboard/src/user.php"><i class="fa fa-user"></i> <?php echo $_SESSION['type'];  ?></a></li>
+
                 <li><a href="dashboard/src/user.php"><i class="fa fa-user"></i> <?php echo $_SESSION['name'];  ?></a></li>
                 <li><a href="logout.php?logout"> Logout </a></li>
                 <?php
               }else{
                  ?>
-                 <li><a href="dashboard/src/superadmin.php"><i class="fa fa-user"></i> <?php echo $_SESSION['type'];  ?></a></li>
+
                  <li><a href="dashboard/src/superadmin.php"><i class="fa fa-user"></i> <?php echo $_SESSION['name'];  ?></a></li>
                  <li><a href="logout.php?logout"> Logout </a></li>
                  <?php
@@ -146,50 +146,10 @@
 	<section>
 		<div class="container">
 			<div class="row">
-				<div class="col-sm-3">
-					<div class="left-sidebar">
-						<div class="pull-left">
-						<h2>Brands</h2>
-						<div class="panel-group category-products" id="accordian"><!--category-productsr-->
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title"><a href="#">Toko A</a></h4>
-								</div>
-							</div>
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title"><a href="#">Toko B</a></h4>
-								</div>
-							</div>
-						</div>
-						
-						<h2>Produk Terbaik Lain</h2>
-						<div class="product-go">
-								<img class="img-responsive fashion" src="coba/20.jpg" alt="">
-							<div class="grid-product">
-								<div class="text-center">
-								<a href="prod-detail.php" class="elit">Roti Unyil</a>
-								<span class=" price-in">RP.20.000 </span>
-								</div>
-							</div>
-							<div class="clearfix"> </div>
-							</div>
-							<div class="product-go">
-								<img class="img-responsive fashion" src="coba/12.jpg" alt="">
-							<div class="grid-product">
-								<div class="text-center">
-								<a href="prod-detail.php" class="elit">Makroni Panggang</a>
-								<span class=" price-in">RP.15.000</span>
-								</div>
-							</div>
-							<div class="clearfix"> </div>
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-					</div>
+
 				</div>
 
-				<div class="col-sm-9 padding-right">
+				<div class="col-sm-12 padding-right">
 					<div class="features_items"><!--features_items-->
             <h2 class="title text-center">Makanan</h2>
             <?php
@@ -201,7 +161,7 @@
 								<div class="single-products">
 										<div class="productinfo text-center">
                       <img src="dashboard/src/images/<?php echo $items['pic']; ?>" width="200" height="250" alt="" style="width:250px; margin-right:20px; margin-bottom:50px;" />
-											<h2>RP.<?php echo $items['price']; ?></h2>
+											<h2>RP.<?php echo number_format($items['price']); ?></h2>
 											<p><?php echo $items['item_name']; ?></p>
                       <?php
                         echo
@@ -212,7 +172,7 @@
 										</div>
 										<div class="product-overlay">
 											<div class="overlay-content">
-												<h2>RP.<?php echo $items['price']; ?></h2>
+												<h2>RP.<?php echo number_format($items['price']) ; ?></h2>
 												<p><?php echo $items['item_name']; ?></p>
                         <?php
                           echo

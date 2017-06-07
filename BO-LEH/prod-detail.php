@@ -152,50 +152,8 @@ $items = mysql_fetch_array($qry);
 	<section>
 		<div class="container">
 			<div class="row">
-				<div class="col-sm-3">
-					<div class="left-sidebar">
-						<div class="pull-left">
-						<h2>Brands</h2>
-						<div class="panel-group category-products" id="accordian"><!--category-productsr-->
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title"><a href="#">Toko A</a></h4>
-								</div>
-							</div>
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title"><a href="#">Toko B</a></h4>
-								</div>
-							</div>
-						</div>
 
-						<h2>Produk Terbaik Lain</h2>
-						<div class="product-go">
-								<img class="img-responsive fashion" src="images/images/20.jpg" alt="">
-							<div class="grid-product">
-								<div class="text-center">
-								<a href="prod-detail.php" class="elit">Roti Unyil</a>
-								<span class=" price-in">RP.20.000 </span>
-								</div>
-							</div>
-							<div class="clearfix"> </div>
-							</div>
-							<div class="product-go">
-								<img class="img-responsive fashion" src="images/images/14.jpg" alt="">
-							<div class="grid-product">
-								<div class="text-center">
-								<a href="prod-detail.php" class="elit">Makroni Panggan</a>
-								<span class=" price-in">RP.15.000</span>
-								</div>
-							</div>
-							<div class="clearfix"> </div>
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-sm-9 padding-right">
+				<div class="col-sm-12 padding-right">
 					<div class="product-details"><!--product-details-->
 						<div class="col-sm-5">
 							<div class="view-product">
@@ -231,7 +189,7 @@ $items = mysql_fetch_array($qry);
                 Rating : <?php echo $ratinguhuy ?> / 5
 								<br/>
                 <span>
-									<span>RP.<?php echo $items['price']; ?></span>
+									<span>RP.<?php echo number_format($items['price']) ; ?></span>
 
                 <!--  '<tr>
                   <td><a href="order.php?id='.$items['id_item'].'" class="btn btn-default cart"><i class="fa fa-shopping-cart"></i>Order</a>
@@ -324,105 +282,30 @@ $items = mysql_fetch_array($qry);
 								</div>
 							</div>
 
-							<div class="tab-pane fade active in" id="reviews" >
-								<div class="col-sm-12">
-									<h3> Write Your Review</h3>
 
-									<form action="#">
-										<span>
-											<input type="text" placeholder="Your Name"/>
-											<input type="email" placeholder="Email Address"/>
-										</span>
-										<textarea name="" ></textarea>
-										<b>Rating: </b> <img src="images/product-details/rating.png" alt="" />
-										<button type="button" class="btn btn-default pull-right">
-											Submit
-										</button>
-									</form>
-								</div>
-							</div>
 
 						</div>
 					</div><!--/category-tab-->
 
 					<div class="recommended_items"><!--recommended_items-->
-						<h2 class="title text-center">recommended items</h2>
+						<h2 class="title text-center">This Product Review</h2>
+            <div class="tab-pane fade active in" id="reviews">
+              <div class="col-sm-12">
+                <form action="#">
+                  <span>
+                    <input type="text" placeholder="Your Name" value="James"/>
+                  </span>
+                  <textarea name="" >
+                      easy
+                  </textarea>
 
-						<div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
-							<div class="carousel-inner">
+                  <button type="button" class="btn btn-default pull-right">
+                    Submit
+                  </button>
+                </form>
+              </div>
+            </div>
 
-								<div class="item active">
-									<div class="col-sm-4">
-										<div class="product-image-wrapper">
-											<div class="single-products">
-												<div class="productinfo text-center">
-													<img src="images/images/13.jpg" alt="" />
-													<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="col-sm-4">
-										<div class="product-image-wrapper">
-											<div class="single-products">
-												<div class="productinfo text-center">
-													<img src="images/images/15.jpg" alt="" />
-													<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="col-sm-4">
-										<div class="product-image-wrapper">
-											<div class="single-products">
-												<div class="productinfo text-center">
-													<img src="images/images/20.jpg" alt="" />
-													<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="item">
-									<div class="col-sm-4">
-										<div class="product-image-wrapper">
-											<div class="single-products">
-												<div class="productinfo text-center">
-													<img src="images/images/14.jpg" alt="" />
-													<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="col-sm-4">
-										<div class="product-image-wrapper">
-											<div class="single-products">
-												<div class="productinfo text-center">
-													<img src="images/images/15.jpg" alt="" />
-													<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="col-sm-4">
-										<div class="product-image-wrapper">
-											<div class="single-products">
-												<div class="productinfo text-center">
-													<img src="images/images/13.jpg" alt="" />
-													<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							 <a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">
-								<i class="fa fa-angle-left"></i>
-							  </a>
-							  <a class="right recommended-item-control" href="#recommended-item-carousel" data-slide="next">
-								<i class="fa fa-angle-right"></i>
-							  </a>
-						</div>
 					</div><!--/recommended_items-->
 
 				</div>

@@ -188,11 +188,7 @@ include('config.php');
                                       <tr>
                                         <td width="100" valign="top">Password For User</td>
                                         <td><input type="password" name="password"></td>
-                                      </tr>
-                                      <tr>
-                                        <td width="100" valign="top">Bank Used</td>
-                                        <td><input type="text" name="bank"></td>
-                                      </tr>
+                                      </tr>                                      
 
                                       <tr>
                                         <td></td>
